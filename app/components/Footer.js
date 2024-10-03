@@ -8,10 +8,10 @@ const Footer = () => {
   return (
     <div className="bg-[#e4e2f2]">
       <section className="section">
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-        <div class="wave wave4"></div>
+        <div className="wave wave1"></div>
+        <div className="wave wave2"></div>
+        <div className="wave wave3"></div>
+        <div className="wave wave4"></div>
       </section>
 
       <div className="bg-[#343435] roun ded-t-[3rem] px-7 pb-7 sm:px-10">

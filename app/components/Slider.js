@@ -14,7 +14,7 @@ const Slider = () => {
         onMouseLeave={() => setPaused(false)}
       >
         <div
-          className="flex space-x-6"
+          className="flex items-stretch space-x-6"
           style={{
             animation: paused ? "none" : "scroll-left 20s linear infinite",
           }}

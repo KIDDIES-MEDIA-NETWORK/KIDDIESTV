@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/mickey-mouse-personal-use');
 @import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+@import url('https://fonts.cdnfonts.com/css/retro-morey');
 
 @keyframes scroll-left {
   0% {
@@ -16,25 +18,26 @@ body {
     font-family: 'Gloria Halleluyah', sans-serif;
 }
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+.text {
+  width: 35ch;
+  border-right: 3px solid;
+  animation: blink 1s step-end infinite, type 4s steps(29) forwards;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }
 
-
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes type {
+  0% {
+    width: 0;
   }
-} */
+}
+
 
 
 /* Grid overlay effect */
@@ -42,7 +45,7 @@ body {
   background-image: 
   linear-gradient(transparent 99.7%, rgba(184, 184, 184, 0.08) 0.3%), 
   linear-gradient(90deg, transparent 99.7%, rgba(184, 184, 184, 0.08) 0.3%);
-  background-color: #000000;
+  background-color: black ;
   background-size: 500px 500px;
   opacity: 0.8;
   z-index: 1;

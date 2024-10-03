@@ -10,6 +10,7 @@ import "video.js/dist/video-js.css";
 import { sampleData } from "./data/sampleData";
 import Slider from "./components/Slider";
 import Footer from "./components/Footer";
+import { FaCirclePlay } from "react-icons/fa6";
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -63,43 +64,26 @@ export default function Home() {
           <Header />
         </div>
 
-        <div className="">
-          <div className="relative h-full">
-            {/* Video with grid overlay */}
-            <div className="relative h-full">
-              <video
-                ref={videoRef}
-                className="video-js vjs-default-skin vjs-big-play-centered object-cover w-full h-full"
-                autoPlay
-                playsInline
-                muted
-              />
-              {/* <div className="wavy"></div> */}
-              <div className="absolute top-0 left-0 w-full h-[120vh] pointer-events-none grid-overlay"></div>
-            </div>
-
-            {/* Container for animating the button from bottom to top */}
-            {/* <div className="absolute bottom-0 left-0 w-full h-full flex items-center justify-center animate-up">
-            <div className="px-3 py-2 rounded-full bg-[#eb4c69] shadow-[#4a252b] shadow-md text-white animate-bounce flex items-center gap-3">
-              <FaPlayCircle size={30} />
-              <Link href={"/live"}>
-                {loading ? "Loading live video streaming..." : "Watch LIVE now!"}
-              </Link>
-            </div>
-          </div> */}
-
-            <div className="absolute flex flex-col gap-5 items-start left-10 top-[30%] text-white z-[10]">
-              <div className="md:text-5xl sm:text-5xl text-3xl font-bold flex flex-col   stroke-white stroke-2 ">
+        <div
+        className="h-screen grid grid-cols-3 items-center pt-20 px-10"
+        style={{
+          backgroundImage: `url(/assets/png/section2.png)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}>
+           <div  data-aos="fade-right"  className="col-span-2 flex flex-col gap-5 items-start pl-10 text-black  z-[10]">
+              <div className="md:text-6xl sm:text-5xl text-2xl font-bold flex flex-col   stroke-white stroke-2 ">
                 <span className="text-3xl font-gloria">Welcome to </span>
-                <h1 className="font-nunito font-bold">
-                  LOVEWORLD KIDDIES NETWORK
+                <h1 className="font-lucky font-extrabold ">
+                  LOVEWORLD <br/> KIDDIES NETWORK
                 </h1>
-                <span className="text-lg font-gloria">
-                  ...where learning about God is always fun{" "}
+                <span className="text-lg font-gloria text">
+                  where learning about God is always fun...
                 </span>
               </div>
-              <p className="md:w-[70%] w-full">
-                <span className="font-gloria">
+              <p className="md:w-[60%] w-full">
+                <span className="font-sniglet ">
                   Enjoy our daily fun, educative and Word-filled videos for your
                   kids. Share this amazing moment with us as we take you through
                   various educational, creative, christian videos that will
@@ -108,12 +92,12 @@ export default function Home() {
                 </span>
               </p>
 
-              <div className="flex gap-5 font-gloria">
+              <div className="flex gap-5 font-sniglet">
                 <Link
                   href={"/live"}
-                  className="bg-gradient-to-b from-[#9C29B2] animate-bounce hover:animate-none to-[#5e086f]  px-3 py-2 rounded-2xl text-white "
+                  className="bg-gradient-to-t flex items-center gap-2 from-[#9C29B2] animate-bounce hover:animate-none to-[#9C29B2]  px-3 py-2 rounded-2xl text-[#fff] "
                 >
-                  Watch Live!
+                  <FaCirclePlay/> Watch Live
                 </Link>
                 <Link
                   href={"/live"}
@@ -123,13 +107,28 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-          </div>
+
+            <div className="relative flex flex-col items-end gap-5 z-[100000]">
+              <div className="flex gap-5">
+
+              <div className=" bottom-0 right-0 w-64 h-52">
+                <Image src="/assets/png/Layer1.png" alt="video card1" className="h-full w-full" height={500} width={500} />
+              </div>
+              <div className=" top-0 w-64 h-52">
+                <Image src="/assets/png/Layer2.png" alt="video card2" height={500} width={500} />
+              </div>
+
+              </div>
+              <div className=" bottom-0 w-64 h-52">
+                <Image src="/assets/png/Layer3.png" alt="video card3" height={500} width={500} />
+              </div>
+            </div>
         </div>
       </div>
 
       {/* New feature starts here: Slider */}
-      <div className={`${!loading ? "pt-16":"pt-20"} bg-[#e4e2f2]`}>
-        <h2 className="text-4xl text-center font-semibold font-nunito">Feature Programs</h2>
+      <div className={`${!loading ? "pt-16":"pt-20"} bg-gradient-to-t from-[#e4e2f2] to-white`}>
+        <h2 className="text-4xl text-center font-bold font-nunito text-primary">Featured Programs</h2>
         <p className="font-schoolbell text-center ">Glance through our most captivating programs and shows</p>
         <Slider />
       </div>
