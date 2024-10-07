@@ -6,7 +6,7 @@ import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <div className="bg-[#e4e2f2]">
+    <div className="bg-[#e4e2f2] ">
       <section className="section">
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>
@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="wave wave4"></div>
       </section>
 
-      <div className="bg-[#343435] roun ded-t-[3rem] px-7 pb-7 sm:px-10">
+      <div className="bg-[#343435] font-sniglet roun ded-t-[3rem] px-7 pb-7 sm:px-10">
         <div className=" text-white flex flex-wrap items-start justify-between gap-6">
           <div className="flex flex-col">
             <h3 className="text-2xl pb-3">Quick Links</h3>
@@ -79,7 +79,7 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className=" font-semibold bg-[#9C29B2] rounded-r-xl p-3"
+              className="  bg-[#9C29B2] rounded-r-xl p-3"
             >
               subscribe
             </button>
