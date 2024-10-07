@@ -9,7 +9,7 @@ const Slider = () => {
   const [selectedCard, setSelectedCard] = useState(null); // State for the selected card dropdown
   return (
     <div
-        className={` w-[90vw] rounded-lg  mt-5  mx-auto overflow-hidden ${paused ? "" : "animate-scroll"} font-gloria `}
+        className={` w-[90vw]  rounded-lg  mt-5  mx-auto overflow-hidden ${paused ? "" : "animate-scroll"}  `}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -40,7 +40,7 @@ const Slider = () => {
               />
 
               <div className="flex justify-between p-4 items-center mt-2">
-                <h3 className="font-bold text-lg">{show.title}</h3>
+                <h3 className="font-sniglet text-lg">{show.title}</h3>
                 <div className="flex items-center gap-2">
                   <FaBell size={20} className="text-gray-500" />
                   <FaChevronDown
