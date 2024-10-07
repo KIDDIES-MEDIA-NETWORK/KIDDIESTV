@@ -1,27 +1,180 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/mickey-mouse-personal-use');
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+@import url('https://fonts.cdnfonts.com/css/retro-morey');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Gloria Halleluyah', sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.text {
+  width: 35ch;
+  border-right: 3px solid;
+  animation: blink 1s step-end infinite, type 7s steps(29) forwards;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+}
+
+
+
+/* Grid overlay effect */
+.grid-overlay {
+  background-image: 
+  linear-gradient(transparent 99.7%, rgba(184, 184, 184, 0.08) 0.3%), 
+  linear-gradient(90deg, transparent 99.7%, rgba(184, 184, 184, 0.08) 0.3%);
+  background-color: black ;
+  background-size: 500px 500px;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Keyframes for button animation */
+@keyframes up {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to the button */
+.animate-up {
+  animation: up 1s ease-out;
+}
+
+/* Create the wave animation */
+.wavy {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: url('/images/wave.svg') repeat-x; /* Use a wave-like SVG */
+  background-size: cover;
+  animation: wave 5s infinite ease-in-out;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateY(10px);
+  }
+  50% {
+    transform: translateX(-25%) translateY(0);
+  }
+  100% {
+    transform: translateX(0) translateY(10px);
+  }
+}
+
+
+
+
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  filter: invert(0.8);
+  /* margin-bottom: 20px; */
+  /* background-color: #4779f7; */
+}
+/* h1 {
+  color: white;
+  text-shadow: -1px -1px 1px black;
+  font-family: 'Dosis', sans-serif;
+  text-transform: uppercase;
+  font-size: 250%;
+  position: absolute;
+  top: 20%;
+  letter-spacing: 1px;
+  width: 100%;
+  text-align: center;
+} */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  margin-bottom: -40px;
+  background: url(https://i.imgur.com/DLD3N2t.png);
+  background-position:top;
+  /* filter: invert(1); */
+  background-size: 100vw 20vh;
+}
+.wave1 {
+  animation: animate 20s linear infinite;
+  z-index: 15;
+  opacity: 0.9;
+  animation-delay: 0s;
+  bottom: 0;
+}
+.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 10;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+.wave3 {
+  animation: animate 10s linear infinite;
+  z-index: 5;
+  opacity: 0.4;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+.wave4 {
+  animation: animate2 5s linear infinite;
+  z-index: 1;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+@keyframes animate {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 100vw;
+  }
+}
+@keyframes animate2 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -100vw;
+  }
+}
+
+.text-stroke {
+  -webkit-text-stroke: 0.1px rgb(240, 240, 255);
+  text-shadow: 2px 2px #535353c5;
+  
 }
