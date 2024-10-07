@@ -173,16 +173,8 @@ body {
   }
 }
 
-.clipped-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  clip-path: inset(0 0 0 0); /* Adjust this to control clipping */
-  z-index: 1;
-  pointer-events: none; /* This ensures the video or image doesn't interfere with any interactive elements */
+.text-stroke {
+  -webkit-text-stroke: 0.1px rgb(240, 240, 255);
+  text-shadow: 2px 2px #535353c5;
+  
 }
