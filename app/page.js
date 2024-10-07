@@ -92,9 +92,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="col-span-1 h-full grid-cols-2 grid gap-11 w-full z-[10]">
+          <div data-aos="fade-left" className="col-span-1 h-full grid-cols-2 grid gap-11 w-full z-[10]">
             <div className="relative  ">
-              <div className=" absolute z-0  w-96 h-60">
+              <div className=" absolute z-0  w-96 h-64">
                 <video
                   src="/video/Lkn_video.mp4"
                   autoPlay
@@ -177,13 +177,13 @@ export default function Home() {
       {/* New feature starts here: Slider */}
       <div
         className={`${
-          !loading ? "pt-16" : "pt-20"
+          !loading ? "pt-10" : "pt-20"
         } bg-gradient-to-t from-[#e4e2f2] to-white`}
       >
         <h2 className="text-4xl text-center font-bold font-nunito text-primary">
           Featured Programs
         </h2>
-        <p className="font-schoolbell text-center ">
+        <p className="font-sniglet text-center ">
           Glance through our most captivating programs and shows
         </p>
         <Slider />
