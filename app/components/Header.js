@@ -22,6 +22,7 @@ const Header = () => {
     // Cleanup the event listener on component unmount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
 
   return (
     <div 
