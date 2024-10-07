@@ -176,9 +176,7 @@ export default function Home() {
 
       {/* New feature starts here: Slider */}
       <div
-        className={`${
-          !loading ? "pt-10" : "pt-20"
-        } bg-gradient-to-t from-[#e4e2f2] to-white`}
+        className={`pt-8 bg-gradient-to-t from-[#e4e2f2] to-white`}
       >
         <h2 className="text-4xl text-center font-bold font-nunito text-primary">
           Featured Programs
