@@ -27,7 +27,7 @@ const Header = () => {
     <div 
       className={`fixed top-0 left-0 w-full px-10  flex justify-between  
       transition-all duration-300 ease-in-out text-white
-      ${isScrolled ? 'bg-primary  shadow-lg items-center h-0 py-10' : 'bg-transparent items-start h-52 py-2'}`
+      ${isScrolled ? 'bg-primary  shadow-lg items-center h-0 py-10' : 'bg-transparent items-start h-[14rem] py-2'}`
     } 
       style={{
         backgroundImage: isScrolled ? 'none' : `url(/assets/png/header.png)`,
@@ -38,21 +38,27 @@ const Header = () => {
     >
       <Image 
         src="/assets/png/loveworld-kiddies-network.png" 
-        width={100} 
+        width={120} 
         height={80} 
-        alt="Logo"
+        alt="loveworld kiddies network Logo"
       />
       
-      <nav className={`flex justify-between items-center gap-7 ${isScrolled ? 'md:mt-0' :'md:mt-3'}`}>
+      <nav className={`flex justify-between items-center gap-4 ${isScrolled ? 'md:mt-0' :'md:mt-3'}`}>
         <Link href={"/"}>Home</Link>
-        <Link href={"/live"} className='flex items-center gap-1'>
-          <FaCirclePlay />
-          LIVE TV
-        </Link>
+        
         <Link href={"/contact"} className='flex items-center gap-1'>
           <LuPhoneCall />
           Contact
         </Link>
+
+        <Link href={"/live"} className='flex items-center font-semibold gap-1 bg-gradient-to-t from-[#bc7d5b] to-[#ffb48d]  px-3 py-1.5 rounded-full text-white animate-pulse'>
+          <FaCirclePlay />
+          Live TV
+        </Link>
+
+        <button href={"/live"} className='w-9 h-9'>
+          <Image src="/assets/png/profiledefault.png" height={50} width={50} className="w-full h-full object-cover" alt="user icon"/>
+        </button>
       </nav>
     </div>
   );

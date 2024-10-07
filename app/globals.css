@@ -21,7 +21,7 @@ body {
 .text {
   width: 35ch;
   border-right: 3px solid;
-  animation: blink 1s step-end infinite, type 4s steps(29) forwards;
+  animation: blink 1s step-end infinite, type 7s steps(29) forwards;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -171,4 +171,10 @@ body {
   100% {
     background-position-x: -100vw;
   }
+}
+
+.text-stroke {
+  -webkit-text-stroke: 0.1px rgb(240, 240, 255);
+  text-shadow: 2px 2px #535353c5;
+  
 }
