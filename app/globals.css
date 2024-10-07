@@ -21,7 +21,7 @@ body {
 .text {
   width: 35ch;
   border-right: 3px solid;
-  animation: blink 1s step-end infinite, type 4s steps(29) forwards;
+  animation: blink 1s step-end infinite, type 7s steps(29) forwards;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -171,4 +171,18 @@ body {
   100% {
     background-position-x: -100vw;
   }
+}
+
+.clipped-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  clip-path: inset(0 0 0 0); /* Adjust this to control clipping */
+  z-index: 1;
+  pointer-events: none; /* This ensures the video or image doesn't interfere with any interactive elements */
 }
