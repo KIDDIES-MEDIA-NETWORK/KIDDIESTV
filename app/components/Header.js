@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,7 +23,7 @@ const Header = () => {
     // Cleanup the event listener on component unmount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
 
   return (
     <div 

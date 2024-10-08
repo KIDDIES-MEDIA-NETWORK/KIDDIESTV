@@ -55,7 +55,7 @@ export default function Home() {
           }}
         >
           <div
-            data-aos="fade-right"
+            
             className="col-span-1 md:mt-10 flex flex-col gap-5 items-start pl-10 text-black  z-[10]"
           >
             <div className="md:text-7xl sm:text-5xl text-2xl font-bold flex flex-col   stroke-white stroke-2 ">
@@ -92,7 +92,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div data-aos="fade-left" className="col-span-1 h-full grid-cols-2 grid gap-11 w-full z-[10]">
+          <div  className="col-span-1 h-full grid-cols-2 grid gap-11 w-full z-[10]">
             <div className="relative  ">
               <div className=" absolute z-0  w-96 h-64">
                 <video
