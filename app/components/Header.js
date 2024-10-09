@@ -2,11 +2,13 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import {usePathname } from 'next/navigation';
 import { LuPhoneCall } from "react-icons/lu";
 import { FaCirclePlay } from 'react-icons/fa6';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathName = usePathname ()
 
   // Scroll effect to change the background
   useEffect(() => {
@@ -29,10 +31,10 @@ const Header = () => {
     <div 
       className={`fixed top-0 left-0 w-full px-10  flex justify-between  
       transition-all duration-300 ease-in-out text-white
-      ${isScrolled ? 'bg-primary  shadow-lg items-center h-0 py-10' : 'bg-transparent items-start h-52 py-2'}`
+      ${isScrolled  || pathName == "/live" ? 'bg-primary  shadow-lg items-center h-0 py-10' : 'bg-transparent items-start h-52 py-2'}`
     } 
       style={{
-        backgroundImage: isScrolled ? 'none' : `url(/assets/png/header.png)`,
+        backgroundImage: isScrolled || pathName == "/live" ? 'none' : `url(/assets/png/header.png)`,
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
@@ -45,7 +47,7 @@ const Header = () => {
         alt="loveworld kiddies network Logo"
       />
       
-      <nav className={`flex justify-between items-center gap-4 ${isScrolled ? 'md:mt-0' :'md:mt-3'}`}>
+      <nav className={`flex justify-between items-center gap-4 ${isScrolled || pathName == "/live" ? 'md:mt-0' :'md:mt-3'}`}>
         <Link href={"/"}>Home</Link>
         
         <Link href={"/contact"} className='flex items-center gap-1'>
