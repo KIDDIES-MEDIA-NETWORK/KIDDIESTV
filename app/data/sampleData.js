@@ -4,8 +4,9 @@ export const sampleData = [
       image: "/video/ror.png",
       gif: "/video/ror.webp",
       description:
-        "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations",
+        "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations. Prepare to learn from the life of David",
       current: true,
+      starts:"3.00pm",
       
     },
     {
@@ -98,3 +99,116 @@ export const sampleData = [
       active: false,
     },
   ];
+
+  const currentDate = new Date()
+
+  export const sampleComment = [
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing and i love it soo much thank You Pastor",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+  ]
