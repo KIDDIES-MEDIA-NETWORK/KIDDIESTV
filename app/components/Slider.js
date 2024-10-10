@@ -10,7 +10,6 @@ const Slider = () => {
   const [selectedCard, setSelectedCard] = useState(null); // State for the selected card dropdown
   return (
     <div  
-        data-aos="fade-top"
         className={` w-[90vw]  rounded-2xl  mt-5  mx-auto overflow-hidden ${paused ? "" : "animate-scroll"}  `}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}

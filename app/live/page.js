@@ -7,6 +7,7 @@ import Heart from "react-animated-heart";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa6";
 import { sampleComment, sampleData } from "../data/sampleData";
 import Image from "next/image";
+import {Link} from "next/navigation";
 import { FormatDate } from "../utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
 import { MdEmojiEmotions } from "react-icons/md";
@@ -18,7 +19,8 @@ const Live = () => {
   const [isClick, setClick] = useState(false);
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState(null); // State for the selected card dropdown
+  const [hoveredCard, setHoveredCard] = useState(null); 
+  const token = false;
 
 
   useEffect(() => {
@@ -144,7 +146,14 @@ const Live = () => {
           <div className=" bg-[#edffaf] relative  rounded-xl shadow-lg font-sniglet">
             <p className=" py-5 px-5 border-b-2 text-2xl text-stroke-top   font-modak">Top Chat</p>
             <div>
-              <div className="flex flex-col gap-3 max-h-[50vh] overflow-y-scroll pt-5 px-5 ">
+              <div className="flex relative flex-col gap-3 max-h-[50vh] overflow-y-scroll pt-5 px-5 ">
+                {!token && (<div className="absolute w-full top-0 left-0 shadow-sm">
+                  <div className="font-sniglet">
+                    <Image src="/assets/png/notallow.png" width={30} height={30} alt="not allowed" />
+                    <p className="text-2xl font-sniglet">You are not logged in</p>
+                    <small>Kindly <Link href="/auth/login" className="text-primary underline ">login</Link> to be able to comment</small>
+                  </div>
+                </div>)}
                 {sampleComment?.map((item, index) => (
                   <div key={index} className="grid grid-cols-10 items-center place-items-between">
                     <Image
@@ -154,8 +163,8 @@ const Live = () => {
                       height={20}
                       alt="user profile icon"
                     />
-                    <div className="col-span-7">
-                      <p className="text-orange font-medium float-left pr-2">{item.name}</p>
+                    <div className="col-span-7 flex-col flex">
+                      <p className="text-primary font-medium  pr-2">{item.name}</p>
                       <p>{item?.comment}</p>
                     </div>
                     <div className="col-span-2">
