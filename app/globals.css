@@ -179,7 +179,7 @@ body {
 }
 
 .text-stroke {
-  -webkit-text-stroke: 0.1px rgb(240, 240, 255);
+  -webkit-text-stroke: 0.1px rgb(240, 240, 255)!important;
   text-shadow: 2px 2px #535353c5;
   
 }

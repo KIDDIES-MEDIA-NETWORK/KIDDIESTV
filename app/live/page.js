@@ -71,7 +71,7 @@ const Live = () => {
       </div>
       <div className="grid grid-cols-11">
         <div className=" pt-24 bg-[#D0D549] col-span-2 px-4  shadow-lg w-full">
-          <h2 className="text-stroke text-primary font-modak text-2xl text-center">Suggested Videos</h2>
+          <h2 className="text-stroke-top text-[#073168] font-modak text-[28px] py-2 text-center">Suggested Videos</h2>
         <div className=" overflow-y-scroll flex flex-col gap-3 h-[80vh]">
         {sampleData.map((show, index) => (
             <div
@@ -119,13 +119,13 @@ const Live = () => {
               playsInline
             />
           <div className="bg-[#3aa2a8] shadow-lg pt-4 rounded-2xl  flex flex-col gap-2">
-          <div className="flex gap-3 items-center px-5">
-            <p className="bg-red-800 font-semibold text-white px-3 py-1.5 rounded-full font-nunito animate-pulse">on now</p>
-            <p className="bg-orange text-white px-3 py-1.5 font-nunito rounded-full">13M+ watching</p>
+          <div className="flex gap-2 items-center px-5">
+            <p className="bg-red-800 text-sm font-semibold text-white px-3 py-1.5 rounded-full font-nunito animate-pulse">on now</p>
+            <p className="bg-orange text-white text-sm px-3 py-1.5 font-nunito rounded-full">13M+ watching</p>
           </div>
           <div className="px-5">
-            <h3 className="text-2xl text-white font-sniglet">{sampleData[0].title}</h3>
-            <small className=" text-slate-400">{sampleData[0]?.starts}</small>
+            <h3 className="text-2xl text-[#282828] text-stroke-top font-modak">{sampleData[0].title}</h3>
+            <small className=" text-[#073168]">{sampleData[0]?.starts}</small>
           </div>
           <p className="font-sniglet text-white px-5">{sampleData[0]?.description}</p>
           <div className="flex items-center gap-2 text-orange bg-[#282828] px-5 py-3 rounded-b-2xl"> Up next:
