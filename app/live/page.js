@@ -7,7 +7,7 @@ import Heart from "react-animated-heart";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa6";
 import { sampleComment, sampleData } from "../data/sampleData";
 import Image from "next/image";
-import {Link} from "next/navigation";
+import Link from "next/link";
 import { FormatDate } from "../utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
 import { MdEmojiEmotions } from "react-icons/md";
@@ -147,12 +147,12 @@ const Live = () => {
             <p className=" py-5 px-5 border-b-2 text-2xl text-stroke-top   font-modak">Top Chat</p>
             <div>
               <div className="flex relative flex-col gap-3 max-h-[50vh] overflow-y-scroll pt-5 px-5 ">
-                {!token && (<div className="absolute w-full top-0 left-0 shadow-sm">
-                  <div className="font-sniglet">
+                {!token && (<div className="absolute w-full top-0 left-0 px-8 py-5 text-center flex flex-col items-center justify-center bg-[#fff] shadow-md">
+                  <div className="font-sniglet flex gap-2">
                     <Image src="/assets/png/notallow.png" width={30} height={30} alt="not allowed" />
-                    <p className="text-2xl font-sniglet">You are not logged in</p>
-                    <small>Kindly <Link href="/auth/login" className="text-primary underline ">login</Link> to be able to comment</small>
+                    <p className="text-xl font-sniglet">You are not logged in</p>
                   </div>
+                    <small>Kindly <Link href="/auth/login" className="text-primary underline ">login</Link> to be able to comment</small>
                 </div>)}
                 {sampleComment?.map((item, index) => (
                   <div key={index} className="grid grid-cols-10 items-center place-items-between">
