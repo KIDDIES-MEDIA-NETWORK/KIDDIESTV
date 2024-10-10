@@ -18,7 +18,7 @@ const Live = () => {
   const [isClick, setClick] = useState(false);
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null); // State for the selected card dropdown
+  const [hoveredCard, setHoveredCard] = useState(null); // State for the selected card dropdown
 
 
   useEffect(() => {
@@ -69,40 +69,36 @@ const Live = () => {
       <div className="fixed z-[100] top-0 w-full">
         <Header />
       </div>
-      <div className="grid grid-cols-9">
-        <div className="h-screen pt-24 overflow-y-scroll bg-[#D0D549] col-span-2 px-4 flex flex-col gap-3 shadow-lg w-full">
-
+      <div className="grid grid-cols-11">
+        <div className=" pt-24 bg-[#D0D549] col-span-2 px-4  shadow-lg w-full">
+          <h2 className="text-stroke text-primary font-modak text-2xl text-center">Suggested Videos</h2>
+        <div className=" overflow-y-scroll flex flex-col gap-3 h-[80vh]">
         {sampleData.map((show, index) => (
             <div
               key={index}
-              className="relative w-full flex-none h-fit   rounded-2xl shadow-lg hover:shadow-xl hover:scale-110 transition-transform duration-300 cursor-pointer"
-              onMouseEnter={() => setSelectedCard(null)} // Hide dropdown when hovering over other cards
+              className="relative w-full flex-none h-fit rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
+              onMouseEnter={() => setHoveredCard(index)} 
+              onMouseLeave={() => setHoveredCard(null)} 
             >
-              {/* Show GIF by default, switch to image on hover */}
+              {/* Show static image by default, switch to GIF on hover */}
               <Image
-                src={selectedCard === index ? show?.gif : show?.image}
+                src={hoveredCard === index ? show.gif : show.image}
                 alt={show.title}
                 height={100}
                 width={100}
                 loading="eager"
                 priority={true}
-                unoptimized={true}
-                className="w-full h-52 object-cover rounded-2xl"
-                onMouseEnter={(e) => e.target.src = show.image}
-                onMouseLeave={(e) => e.target.src = show.gif}
+                className="w-full h-40 object-cover rounded-2xl"
               />
-
-              <div className='bg-gradient-to-t from-[#282828] rounded-2xl to-transparent absolute top-0 left-0 w-full h-full'></div>
-
-              <div className="absolute bottom-0 left-0 text-white flex  w-full justify-between p-4 items-center mt-2">
-                <h3 className="font-sniglet text-base">{show.title}</h3>
-                
-              </div>
-
               
+              <div className="bg-gradient-to-t from-[#282828] rounded-2xl to-transparent absolute top-0 left-0 w-full h-full"></div>
+              <div className="absolute bottom-0 left-0 text-white flex w-full justify-between p-4 items-center mt-2">
+                <h3 className="font-sniglet text-base">{show.title}</h3>
+              </div>
             </div>
           ))}
 
+        </div>
         </div>
 
         <div
@@ -112,7 +108,7 @@ const Live = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className="grid grid-cols-9 col-span-7 min-h-screen items-start px-5 md:px-10 md:pt-28"
+        className="grid grid-cols-9 col-span-9 min-h-screen items-start px-5 md:px-10 md:pt-28"
       >
         <div className="col-span-6">
           <div className="h-[80vh] w-[90%] opacity-1  flex flex-col gap-3 items-center justify-center !rounded-xl  m-auto">
