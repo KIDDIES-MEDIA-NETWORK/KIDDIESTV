@@ -120,11 +120,11 @@ const Live = () => {
             />
           <div className="bg-[#3aa2a8] shadow-lg pt-4 rounded-2xl  flex flex-col gap-2">
           <div className="flex gap-2 items-center px-5">
-            <p className="bg-red-800 font-semibold text-white px-3 py-1.5 rounded-full font-nunito animate-pulse">on now</p>
-            <p className="bg-orange text-white px-3 py-1.5 font-nunito rounded-full">13M+ watching</p>
+            <p className="bg-red-800 text-sm font-semibold text-white px-3 py-1.5 rounded-full font-nunito animate-pulse">on now</p>
+            <p className="bg-orange text-white text-sm px-3 py-1.5 font-nunito rounded-full">13M+ watching</p>
           </div>
           <div className="px-5">
-            <h3 className="text-2xl text-primary text-stroke-top font-modak">{sampleData[0].title}</h3>
+            <h3 className="text-2xl text-[#282828] text-stroke-top font-modak">{sampleData[0].title}</h3>
             <small className=" text-[#073168]">{sampleData[0]?.starts}</small>
           </div>
           <p className="font-sniglet text-white px-5">{sampleData[0]?.description}</p>
