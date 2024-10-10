@@ -44,7 +44,7 @@ export const sampleData = [
     },
     {
       title: "Derren's House Rules",
-      image: "/video/derren.png",
+      image: "/video/derren.webp",
       gif: "/video/derren-.webp",
       description:
         "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations",
@@ -84,7 +84,7 @@ export const sampleData = [
     },
     {
       title: "Knowledge Hub",
-      image: "/video/wildlife.jpeg",
+      image: "/video/wildlife.jpg",
       gif: "/video/wildlife.webp",
       description:
         "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations",

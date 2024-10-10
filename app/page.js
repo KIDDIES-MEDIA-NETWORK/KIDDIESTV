@@ -178,10 +178,10 @@ export default function Home() {
       <div
         className={`pt-8 bg-gradient-to-t from-[#e4e2f2] to-white`}
       >
-        <h2 className="text-4xl text-center font-bold font-nunito text-primary">
+        <h2 data-aos="fade-top" className="text-4xl text-center font-bold font-nunito text-primary">
           Featured Programs
         </h2>
-        <p className="font-sniglet text-center ">
+        <p data-aos="fade-top" className="font-sniglet text-center ">
           Glance through our most captivating programs and shows
         </p>
         <Slider />
