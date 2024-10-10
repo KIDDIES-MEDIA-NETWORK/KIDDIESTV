@@ -7,6 +7,7 @@ import Heart from "react-animated-heart";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa6";
 import { sampleComment, sampleData } from "../data/sampleData";
 import Image from "next/image";
+import Link from "next/link";
 import { FormatDate } from "../utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
 import { MdEmojiEmotions } from "react-icons/md";
@@ -18,7 +19,8 @@ const Live = () => {
   const [isClick, setClick] = useState(false);
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState(null); // State for the selected card dropdown
+  const [hoveredCard, setHoveredCard] = useState(null); 
+  const token = false;
 
 
   useEffect(() => {
@@ -143,8 +145,15 @@ const Live = () => {
           </h1>
           <div className=" bg-[#edffaf] relative  rounded-xl shadow-lg font-sniglet">
             <p className=" py-5 px-5 border-b-2 text-2xl text-stroke-top   font-modak">Top Chat</p>
-            <div>
-              <div className="flex flex-col gap-3 max-h-[50vh] overflow-y-scroll pt-5 px-5 ">
+            <div className="relative">
+                {!token && (<div className="absolute z-[1000] w-full top-0 left-0 px-5 py-4 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
+                  <div className="font-sniglet flex gap-2">
+                    <Image src="/assets/png/notallow.png" className="animate-pulse" width={30} height={30} alt="not allowed" />
+                    <p className="text-xl font-sniglet">You are not logged in</p>
+                  </div>
+                    <small>Kindly <Link href="/auth/login" className="text-primary text-lg underline ">login</Link> to be able to comment</small>
+                </div>)}
+              <div className="flex relative flex-col gap-3 max-h-[50vh] overflow-y-scroll pt-5 px-5 ">
                 {sampleComment?.map((item, index) => (
                   <div key={index} className="grid grid-cols-10 items-center place-items-between">
                     <Image
@@ -154,8 +163,8 @@ const Live = () => {
                       height={20}
                       alt="user profile icon"
                     />
-                    <div className="col-span-7">
-                      <p className="text-orange font-medium float-left pr-2">{item.name}</p>
+                    <div className="col-span-7 flex-col flex">
+                      <p className="text-primary font-medium  pr-2">{item.name}</p>
                       <p>{item?.comment}</p>
                     </div>
                     <div className="col-span-2">
@@ -166,10 +175,11 @@ const Live = () => {
               </div>
               <div className="w-full px-5 flex items-center justify-between">
                 <input
+                disabled={!token}
                   value={newPostComment}
                   onChange={(e) => setNewPostComment(e.target.value)}
                   placeholder="Type and press enter..."
-                  className="w-full resize-none focus:outline-none bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
+                  className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
                 />
                 <Heart
                   size={29}
