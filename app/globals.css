@@ -19,9 +19,9 @@ body {
 }
 
 .text {
-  width: 35ch;
+  width: 36ch;
   border-right: 3px solid;
-  animation: blink 1s step-end infinite, type 7s steps(29) forwards;
+  animation: type 5s steps(29) forwards, blink 1s step-end 7;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -35,6 +35,11 @@ body {
 @keyframes type {
   0% {
     width: 0;
+    border-color: black;
+  }
+  100% {
+    width: 36ch;
+    border-color: transparent; /* Makes the cursor disappear after typing */
   }
 }
 
@@ -176,5 +181,9 @@ body {
 .text-stroke {
   -webkit-text-stroke: 0.1px rgb(240, 240, 255);
   text-shadow: 2px 2px #535353c5;
+  
+}
+.text-stroke-top {
+  -webkit-text-stroke: 0.5px rgb(240, 240, 255);
   
 }

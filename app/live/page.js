@@ -18,6 +18,8 @@ const Live = () => {
   const [isClick, setClick] = useState(false);
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null); // State for the selected card dropdown
+
 
   useEffect(() => {
     if (!playerRef.current) {
@@ -67,24 +69,60 @@ const Live = () => {
       <div className="fixed z-[100] top-0 w-full">
         <Header />
       </div>
-      <div
+      <div className="grid grid-cols-9">
+        <div className="h-screen pt-24 overflow-y-scroll bg-[#D0D549] col-span-2 px-4 flex flex-col gap-3 shadow-lg w-full">
+
+        {sampleData.map((show, index) => (
+            <div
+              key={index}
+              className="relative w-full flex-none h-fit   rounded-2xl shadow-lg hover:shadow-xl hover:scale-110 transition-transform duration-300 cursor-pointer"
+              onMouseEnter={() => setSelectedCard(null)} // Hide dropdown when hovering over other cards
+            >
+              {/* Show GIF by default, switch to image on hover */}
+              <Image
+                src={selectedCard === index ? show?.gif : show?.image}
+                alt={show.title}
+                height={100}
+                width={100}
+                loading="eager"
+                priority={true}
+                unoptimized={true}
+                className="w-full h-52 object-cover rounded-2xl"
+                onMouseEnter={(e) => e.target.src = show.image}
+                onMouseLeave={(e) => e.target.src = show.gif}
+              />
+
+              <div className='bg-gradient-to-t from-[#282828] rounded-2xl to-transparent absolute top-0 left-0 w-full h-full'></div>
+
+              <div className="absolute bottom-0 left-0 text-white flex  w-full justify-between p-4 items-center mt-2">
+                <h3 className="font-sniglet text-base">{show.title}</h3>
+                
+              </div>
+
+              
+            </div>
+          ))}
+
+        </div>
+
+        <div
         style={{
           backgroundImage: `url(/assets/png/livebg.png)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className="grid grid-cols-9 min-h-screen items-start px-5 md:px-10 md:pt-28"
+        className="grid grid-cols-9 col-span-7 min-h-screen items-start px-5 md:px-10 md:pt-28"
       >
         <div className="col-span-6">
-          <div className="h-[80vh] w-[70%] opacity-1  flex flex-col gap-3 items-center justify-center !rounded-xl  m-auto">
+          <div className="h-[80vh] w-[90%] opacity-1  flex flex-col gap-3 items-center justify-center !rounded-xl  m-auto">
             <video
               ref={videoRef}
               className="video-js vjs-big-play-centered object-cover !border-4 shadow-md !border-white !rounded-xl h-full w-full"
               autoPlay
               playsInline
             />
-          <div className="bg-[#AA0CB9] shadow-lg pt-4 rounded-2xl  flex flex-col gap-2">
+          <div className="bg-[#3aa2a8] shadow-lg pt-4 rounded-2xl  flex flex-col gap-2">
           <div className="flex gap-3 items-center px-5">
             <p className="bg-red-800 font-semibold text-white px-3 py-1.5 rounded-full font-nunito animate-pulse">on now</p>
             <p className="bg-orange text-white px-3 py-1.5 font-nunito rounded-full">13M+ watching</p>
@@ -99,7 +137,7 @@ const Live = () => {
           </div>
           </div>
         </div>
-          </div>
+        </div>
 
 
 
@@ -107,8 +145,8 @@ const Live = () => {
           <h1 className="font-modak font-bold text-5xl text-center text-stroke text-[#073168]">
             Live Comments
           </h1>
-          <div className=" bg-white relative  rounded-xl shadow-lg font-sniglet">
-            <p className=" py-5 px-5 border-b-2 text-2xl font-modak">Top Chat</p>
+          <div className=" bg-[#edffaf] relative  rounded-xl shadow-lg font-sniglet">
+            <p className=" py-5 px-5 border-b-2 text-2xl text-stroke-top   font-modak">Top Chat</p>
             <div>
               <div className="flex flex-col gap-3 max-h-[50vh] overflow-y-scroll pt-5 px-5 ">
                 {sampleComment?.map((item, index) => (
@@ -125,7 +163,7 @@ const Live = () => {
                       <p>{item?.comment}</p>
                     </div>
                     <div className="col-span-2">
-                      <small>{FormatDate(item.created_at)} ago</small>
+                      <small>{FormatDate(item.created_at)}</small>
                     </div>
                   </div>
                 ))}
@@ -134,7 +172,7 @@ const Live = () => {
                 <input
                   value={newPostComment}
                   onChange={(e) => setNewPostComment(e.target.value)}
-                  placeholder="Drop comment and press enter"
+                  placeholder="Type and press enter..."
                   className="w-full resize-none focus:outline-none bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
                 />
                 <Heart
@@ -175,6 +213,9 @@ const Live = () => {
           </div>
         </div>
       </div>
+      </div>
+
+      
     </div>
   );
 };
