@@ -1,6 +1,5 @@
 import "@/app/globals.css";
 import { AOSInit } from "@/app/components/aos";
-import { ReduxProvider } from "../services/ReduxProvider";
 
 export const metadata = {
   title: "Loveworld Kiddies Network | SIGN UP",
@@ -43,10 +42,8 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className={`antialiased`}>
-        <ReduxProvider>
           <AOSInit />
           {children}
-        </ReduxProvider>
       </body>
     </html>
   );
