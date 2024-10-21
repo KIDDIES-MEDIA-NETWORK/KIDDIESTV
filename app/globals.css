@@ -16,6 +16,23 @@
   }
 }
 
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Add a custom Tailwind animation */
+@layer utilities {
+  .animate-slide {
+    animation: slide 20s linear infinite;
+  }
+}
+
+
 body {
     font-family: 'Gloria Halleluyah', sans-serif;
 }

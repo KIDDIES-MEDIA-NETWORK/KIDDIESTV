@@ -43,27 +43,27 @@ export default function Home() {
                   height={300}
                   width={300}
                 />   
-                <div className="absolute   z-[10] font-sniglet  text-white flex justify-center items-center   h-screen right-[50%] text-center translate-x-[50%]">
+                <div className="absolute   z-[10] font-sniglet  text-white flex flex-col justify-center items-center   h-screen right-[50%] text-center translate-x-[50%]">
                   <div className=" bg-whit py-4 px-3 rounded-xl flex items-center flex-col ">
 
-                  <h3 className="text-8xl font-jua  ">Home for all kids</h3>
-                  <h3 className="text-4xl font-jua text-[#F8DD2D] text- ">Loveworld Kiddies Network</h3>
-                  <p>All channels... one network</p>
+                    <h3 className="text-8xl font-jua  ">Home for all kids</h3>
+                    <h3 className="text-4xl font-jua text-[#F8DD2D] text- ">Loveworld Kiddies Network</h3>
+                    <p>All channels... one network</p>
 
-                  <Link href="/channels" className=" py-2 text-xl text-center flex items-center mx-auto ">
-                  <p className="w-44 -ml-12 -mr-8 text-center">
-                    <DotLottieReact
-                      src="/assets/svgs/PlayAnimation.json"
-                      loop
-                      autoplay
-                    />
+                    <Link href="/channels" className=" py-2 text-xl text-center flex items-center mx-auto ">
+                    <p className="w-44 -ml-12 -mr-8 text-center">
+                      <DotLottieReact
+                        src="/assets/svgs/PlayAnimation.json"
+                        loop
+                        autoplay
+                      />
     </p> <p>Watch Live</p></Link>
                   </div>
 
-                </div> 
                   <div>
                     <Carousel images={images}/>
                   </div>
+                </div> 
         </div>
       </div>
 

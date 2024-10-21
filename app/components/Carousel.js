@@ -1,38 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useRef } from "react";
 
 const Carousel = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000); // Change slide every 3 seconds
-
-    return () => clearInterval(interval); // Clear the interval on component unmount
-  }, [images.length]);
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      sliderRef.current.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-  }, [currentIndex]);
-
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <div className="relative w-96 h-64 overflow-hidden rounded-lg shadow-lg">
+    <div className="w-full  flex items-center justify-center">
+      <div className="relative w-[40%] mx-auto h-fit overflow-hidden ">
+        {/* Slider container */}
         <div
           ref={sliderRef}
-          className="flex transition-transform duration-700 ease-in-out"
+          className="flex gap-5 items-center w-max animate-slide whitespace-nowrap"
         >
-          {images.map((image, index) => (
-            <img
+          {images.concat(images).map((image, index) => (
+            <Image
+            width={100}
+            height={100}
               key={index}
               src={image}
               alt={`Slide ${index}`}
-              className="w-96 h-64 object-cover"
+              className="w-32 h-fit object-cover"
             />
           ))}
         </div>
