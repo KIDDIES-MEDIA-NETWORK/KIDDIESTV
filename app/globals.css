@@ -202,6 +202,11 @@ body {
   text-shadow: 2px 2px #535353c5;
   
 }
+.text-stroke-heading {
+  -webkit-text-stroke: 0.5px rgb(240, 240, 255)!important;
+  text-shadow: 5px 5px #535353c5;
+  
+}
 .text-stroke-top {
   -webkit-text-stroke: 0.5px rgb(240, 240, 255);
   

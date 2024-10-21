@@ -37,19 +37,19 @@ export default function Home() {
                   loop
                   muted
                   alt="video card1"
-                  className="h-screen brightness-[0.27] float-right object-cover w-[100%]"
+                  className="h-screen brightness-[0.3] float-right object-cover w-[100%]"
                   height={300}
                   width={300}
                 />   
                 <div className="absolute   z-[10] font-sniglet  text-white flex flex-col justify-center items-center   h-screen right-[50%] text-center translate-x-[50%]">
                   <div className=" bg-whit py-4 px-3 rounded-xl flex items-center flex-col ">
 
-                    <h3 className="text-8xl font-jua  ">Home for all kids</h3>
+                    <h3 className="text-8xl font-jua text-stroke-top ">The home for all kids</h3>
                     <h3 className="text-4xl font-jua text-[#F8DD2D] text- ">Loveworld Kiddies Network</h3>
-                    <p className="italic">All channels... one network</p>
+                    <p className="italic">...all channels... one network</p>
 
                     <Link href="/channels" className=" py-2 text-xl text-center flex items-center mx-auto ">
-                    <p className="w-44 -ml-12 -mr-8 text-center">
+                    <p className="w-52 -ml-12 -mr-12 text-center">
                       <DotLottieReact
                         src="/assets/svgs/PlayAnimation.json"
                         loop

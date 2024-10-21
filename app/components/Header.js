@@ -11,6 +11,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const pathName = usePathname ()
+  console.log(pathName, "pathnnaammmeee")
 
   // Scroll effect to change the background
   useEffect(() => {
@@ -33,10 +34,10 @@ const Header = () => {
     <div 
       className={`fixed top-0 left-0 w-full px-10  flex justify-between  
       transition-all duration-300 ease-in-out text-white
-      ${isScrolled  || pathName !== "/" ? 'bg-primary  shadow-lg items-center h-0 py-10' : 'bg-transparent items-start h-52 py-2'}`
+      ${isScrolled  || pathName !== "/home" ? 'bg-primary  shadow-lg items-center h-0 py-10' : 'bg-transparent items-start h-52 py-2'}`
     } 
       style={{
-        backgroundImage: isScrolled || pathName !== "/"  || pathName == "/home"  ? 'none' : `url(/assets/png/header.png)`,
+        backgroundImage: isScrolled  || pathName !== "/home" ? 'none' : `url(/assets/png/header.png)`,
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
@@ -49,7 +50,7 @@ const Header = () => {
         alt="loveworld kiddies network Logo"
       />
       
-      <nav className={`flex relative justify-between items-center gap-4 ${isScrolled || pathName !== "/" ? 'md:mt-0' :'md:mt-3'}`}>
+      <nav className={`flex relative justify-between items-center gap-4 ${isScrolled || pathName !== "/home" ? 'md:mt-0' :'md:mt-3'}`}>
         <Link href={"/"}>Home</Link>
         
         <Link href={"/contact"} className='flex items-center gap-1'>
