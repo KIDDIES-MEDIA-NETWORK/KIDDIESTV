@@ -1,4 +1,3 @@
-import localFont from "next/font/local";
 import "@/app/globals.css";
 import { AOSInit } from "@/app/components/aos";
 import { ReduxProvider } from "@/app/services/ReduxProvider";
@@ -10,8 +9,8 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: "./LKN.png",
-        href: "./LKN.png",
+        url: "/LKN.png",
+        href: "/LKN.png",
       },
     ],
   },
@@ -24,7 +23,7 @@ export default function RootLayout({ children }) {
       <head>
         <link
           rel="icon"
-          href="./LKN.png"
+          href="/LKN.png"
           type="image/<generated>"
           sizes="32x32"
         />
