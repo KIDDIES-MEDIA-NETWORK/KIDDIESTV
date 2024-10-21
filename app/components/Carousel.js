@@ -6,7 +6,7 @@ const Carousel = ({ images }) => {
 
   return (
     <div className="w-full  flex items-center justify-center">
-      <div className="relative w-[40%] mx-auto h-fit overflow-hidden ">
+      <div className="relative w-[50%] mx-auto h-fit overflow-hidden ">
         {/* Slider container */}
         <div
           ref={sliderRef}
