@@ -36,7 +36,7 @@ const Header = () => {
       ${isScrolled  || pathName !== "/" ? 'bg-primary  shadow-lg items-center h-0 py-10' : 'bg-transparent items-start h-52 py-2'}`
     } 
       style={{
-        backgroundImage: isScrolled || pathName !== "/"  || pathName !== "/home"  ? 'none' : `url(/assets/png/header.png)`,
+        backgroundImage: isScrolled || pathName !== "/"  || pathName == "/home"  ? 'none' : `url(/assets/png/header.png)`,
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
@@ -65,14 +65,13 @@ const Header = () => {
         <button href={"/live"} className='w-9 h-9' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <Image src="/assets/png/profiledefault.png" height={50} width={50} className="w-full h-full object-cover" alt="user icon"/>
         </button>
-        { !isHovered && (
+        { isHovered && (
           <div className='flex absolute top-10 right-0 rounded-xl flex-col  bg-white shadow-md w-48 py-5 text-black '>
             <Link href="/login" className="hover:bg-primary border-y hover:border-none   flex items-center gap-2  py-3 px-4 hover:text-white" ><FaUserCircle /> Log in to account</Link>
             <Link href="/register" className="hover:bg-primary py-3 px-4 flex items-center gap-2 hover:text-white" ><FaUserPlus /> Create an account</Link>
             <Link href="/register" className="hover:bg-primary py-3 px-3.5 hover:text-white flex items-center gap-2" ><Image src="/assets/png/espeesCoin.png" height={10} width={10} className="w-[22px] h-full object-cover " alt="user icon"/>Partner with Us</Link>
           </div>
         )}
-
       </nav>
     </div>
   );

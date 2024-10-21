@@ -19,9 +19,7 @@ import Carousel from "../components/Carousel";
 export default function Home() {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
-  const [loading, setLoading] = useState(true); // State to manage loading text
-  // const [paused, setPaused] = useState(false); // State to control slider pause on hover
-  // const [selectedCard, setSelectedCard] = useState(null); // State for the selected card dropdown
+  const [loading, setLoading] = useState(true); 
 
  
 
@@ -48,7 +46,7 @@ export default function Home() {
 
                     <h3 className="text-8xl font-jua  ">Home for all kids</h3>
                     <h3 className="text-4xl font-jua text-[#F8DD2D] text- ">Loveworld Kiddies Network</h3>
-                    <p>All channels... one network</p>
+                    <p className="italic">All channels... one network</p>
 
                     <Link href="/channels" className=" py-2 text-xl text-center flex items-center mx-auto ">
                     <p className="w-44 -ml-12 -mr-8 text-center">
@@ -69,7 +67,7 @@ export default function Home() {
 
       {/* New feature starts here: Slider */}
       <div
-        className={`pt-8 bg-gradient-to-t from-[#e4e2f2] to-white`}
+        className={`mt-10 bg-gradient-to-t from-[#e4e2f2] to-white`}
       >
         <h2 data-aos="fade-top" className="text-4xl text-center font-bold font-nunito text-primary">
           Featured Programs

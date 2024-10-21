@@ -3,17 +3,6 @@ import "@/app/globals.css";
 import { AOSInit } from "@/app/components/aos";
 import { ReduxProvider } from "@/app/services/ReduxProvider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export const metadata = {
   title: "Loveworld Kiddies Network | SIGN UP",
   description:
@@ -56,7 +45,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <ReduxProvider>{children}</ReduxProvider>
       </body>
