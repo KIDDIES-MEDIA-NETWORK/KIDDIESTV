@@ -50,7 +50,7 @@ const Header = () => {
         alt="loveworld kiddies network Logo"
       />
       
-      <nav className={`flex relative justify-between items-center gap-4 ${isScrolled || pathName !== "/home" ? 'md:mt-0' :'md:mt-3'}`}>
+      <nav className={`flex  justify-between items-center gap-4 ${isScrolled || pathName !== "/home" ? 'md:mt-0' :'md:mt-3'}`}>
         <Link href={"/"}>Home</Link>
         
         <Link href={"/contact"} className='flex items-center gap-1'>
@@ -63,7 +63,8 @@ const Header = () => {
           Live TV
         </Link>
 
-        <button href={"/live"} className='w-9 h-9' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <div className="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <button href={"/live"} className='w-9 h-9'>
           <Image src="/assets/png/profiledefault.png" height={50} width={50} className="w-full h-full object-cover" alt="user icon"/>
         </button>
         { isHovered && (
@@ -73,6 +74,7 @@ const Header = () => {
             <Link href="/register" className="hover:bg-primary py-3 px-3.5 hover:text-white flex items-center gap-2" ><Image src="/assets/png/espeesCoin.png" height={10} width={10} className="w-[22px] h-full object-cover " alt="user icon"/>Partner with Us</Link>
           </div>
         )}
+        </div>
       </nav>
     </div>
   );

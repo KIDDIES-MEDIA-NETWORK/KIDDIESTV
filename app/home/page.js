@@ -45,19 +45,19 @@ export default function Home() {
                   <div className=" bg-whit py-4 px-3 rounded-xl flex items-center flex-col ">
                   
                     <h3 className="text-8xl font-jua text-stroke font-bold ">The Home for all Kids</h3>
-                    <h3 className="text-4xl font-jua text-[#F8DD2D] text- ">Loveworld Kiddies Network</h3>
+                    <h3 className="text-4xl font-bold font-jua text-[#F8DD2D] text- ">Loveworld Kiddies Network</h3>
                     <p className="italic">...all channels... one network</p>
 
-                    <Link href="/channels" className="bg-[#fff] shadow-xl border-2 border-orange  text-black  rounded-full pr-12 pl-5 mt-4   text-2xl text-center flex items-center mx-auto ">
-                    <p className="w-40 -ml-12 -mr-10 text-center">
+                    <Link href="/channels" className="bg-gradient-to-t from-[#bc7d5b] to-[#ffb48d]  shadow-xl border-2    rounded-full pr-12 pl-5 mt-4   text-2xl text-center flex items-center mx-auto ">
+                    <p className="w-40 -ml-12 fill-slate-500 -mr-10 text-center">
                       <DotLottieReact
-                        src="/assets/svgs/PlayAnimation.json"
+                        src="/assets/svgs/lottie.json"
                         loop
                         autoplay
-                        className="fill-black"
+                        className=""
                         color="black"
                       />
-    </p> <p className="text-primary font-bold">Watch Live</p></Link>
+    </p> <p className="text-white font-bold">Watch Live</p></Link>
                   </div>
 
                   <div className="mt-10">
