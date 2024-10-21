@@ -1,3 +1,11 @@
+export const images = [
+  "/assets/png/PCDL4Kids.png",
+  "/assets/png/KFS.png",
+  "/assets/png/lovetoons-TV.png",
+  "/assets/png/rorktv-logo.png",
+]
+
+
 export const sampleData = [
     {
       title: "My Rhapsody of Realities",

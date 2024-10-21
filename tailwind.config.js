@@ -23,6 +23,7 @@ module.exports = {
         modak:['"Modak"', 'sans-serif'],
         lucky:['"Luckiest Guy"', 'sans-serif'],
         sniglet:['"Sniglet"', 'sans-serif'],
+        jua:['"Jua"', 'sans-serif'],
       },
     },
   },
