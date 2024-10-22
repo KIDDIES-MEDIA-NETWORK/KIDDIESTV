@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { AOSInit } from "./components/aos";
+import { ReduxProvider } from "./services/ReduxProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,19 +14,18 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-
 export const metadata = {
   title: "Loveworld Kiddies Network",
   description:
     "No 1 kid's educative creative and fun tv channel website where your child learns, grows and is fed the word of God. Proudly an arm under the Believer's loveworld from our Highly Esteemed Man of God Pst Chris Oyakhilome, DSc, DD",
-    icons: {
-      icon: [
-        {
-          url: "./LKN.png",
-          href: "./LKN.png",
-        },
-      ],
-    },
+  icons: {
+    icon: [
+      {
+        url: "/LKN.png",
+        href: "/LKN.png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       <head>
         <link
           rel="icon"
-          href="./LKN.png"
+          href="/LKN.png"
           type="image/<generated>"
           sizes="32x32"
         />
@@ -49,15 +49,17 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Modak&family=Sniglet:wght@400;800&display=swap"
           rel="stylesheet"
         />
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"/>
         <link
           href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Schoolbell&display=swap"
           rel="stylesheet"
         />
       </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );
