@@ -203,8 +203,9 @@ body {
   
 }
 .text-stroke-heading {
-  -webkit-text-stroke: 0.5px rgb(240, 240, 255)!important;
-  text-shadow: 5px 5px #535353c5;
+  /* -webkit-text-stroke: 0.5px rgb(240, 240, 255)!important; */
+  text-shadow: 5px 5px 7px #282828;
+  /* line-height: 5px; */
   
 }
 .text-stroke-top {
