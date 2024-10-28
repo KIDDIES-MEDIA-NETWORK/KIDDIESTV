@@ -11,10 +11,10 @@ const Channels = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="bg-gra dient-to-t font-sniglet from-[#bc7d5b] to-[#ffb48d] h-screen">
+    <div className="bg-gradient-to-t font-sniglet bg-opacity-50 from-[#bc7d5b81] to-[#ffb48d81] min-h-screen">
       <Header />
 
-      <div className="mt-10 px-10">
+      <div className="mt-10 px-24">
         <div>
           <h2 className="text-3xl my-3">Continue watching...</h2>
           <div className="flex flex-wrap gap-5">
@@ -30,7 +30,7 @@ const Channels = () => {
                   src={hoveredIndex === index ? item.montage : item.icon}
                   width={500}
                   height={500}
-                  className="rounded-2xl bg-slate-900 p-5  h-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                  className="rounded-2xl bg-slate-900 p-5 group-hover:shadow-md  h-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
                   alt={`${item.channel} icon`}
                 />
                 <p className="text-xl mt-2 text-center">{item.channel}</p>
@@ -67,7 +67,7 @@ const Channels = () => {
                   src={hoveredIndex === index + 3 ? item.montage : item.icon}
                   width={500}
                   height={500}
-                  className="rounded-2xl bg-slate-900 p-5  h-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                  className="rounded-2xl bg-slate-900 p-5  h-full transition-transform duration-300 ease-in-out transform group-hover:shadow-lg group-hover:scale-105"
                   alt={`${item.channel} icon`}
                 />
                 <p className="text-xl mt-2 text-center">{item.channel}</p>
