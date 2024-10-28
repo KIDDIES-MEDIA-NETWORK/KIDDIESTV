@@ -14,9 +14,9 @@ const Channels = () => {
     <div className="bg-gradient-to-t font-sniglet bg-opacity-50 from-[#bc7d5b81] to-[#ffb48d81] min-h-screen">
       <Header />
 
-      <div className="mt-10 px-24">
+      <div className="pb-20 pt-10 px-24">
         <div>
-          <h2 className="text-3xl my-3">Continue watching...</h2>
+          <h2 className="text-3xl mb-3">Continue watching...</h2>
           <div className="flex flex-wrap gap-5">
             {channels.slice(1, 3).map((item, index) => (
               <Link
