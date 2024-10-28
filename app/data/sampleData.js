@@ -3,6 +3,35 @@ export const images = [
   "/assets/png/KFS.png",
   "/assets/png/lovetoons-TV.png",
   "/assets/png/rorktv-logo.png",
+  "/assets/png/klw.png",
+]
+
+export const channels =[
+  {
+    channel: 'PCDL4Kids',
+    icon: "/assets/png/PCDL4Kids.png",
+    montage: "/assets/png/PCDL4Kids.png",
+  },
+  {
+    channel: 'Lovetoons TV',
+    icon: "/assets/png/lovetoons-TV.png",
+    montage: "/assets/png/lovetoons-TV.png",
+  },
+  {
+    channel: 'KLW TV',
+    icon: "/assets/png/klw.png",
+    montage: "/assets/png/klw.png",
+  },
+  {
+    channel: 'Rhapsody of Realities Kids TV',
+    icon: "/assets/png/rorktv-logo.png",
+    montage: "/assets/png/rorktv-logo.png",
+  },
+  {
+    channel: 'Kids fun Spot',
+    icon: "/assets/png/KFS.png",
+    montage: "/assets/png/KFS.png",
+  },
 ]
 
 
