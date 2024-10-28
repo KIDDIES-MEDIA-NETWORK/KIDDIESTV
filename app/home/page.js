@@ -28,7 +28,7 @@ export default function Home() {
 
         <div className="relative">
           <Image
-            src="/assets/png/bgfirst.png"
+            src="/assets/png/bgnew.png"
             width={3000}
             height={3000}
             // layout="fill"
@@ -45,7 +45,7 @@ export default function Home() {
             height={300}
             width={300}
           />
-          <div className="absolute top-16  z-[10] font-sniglet  text-white flex flex-col justify-center items-center  h-screen right-[50%] text-center translate-x-[50%]">
+          <div className="absolute top-16  z-[10] font-sniglet  text-white flex flex-col justify-center items-center w-full  h-screen right-[50%] text-center translate-x-[50%]">
             <div className=" px-10 py-10 bg-gradient-to-t from-[#2E212981] to-[#2E212981] shadow-md rounded-xl flex items-center flex-col ">
               <h3 className="text-7xl font-jua text-stroke-heading font-bold text-white ">
                 A Home <br />
@@ -73,7 +73,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-">
+            <div className="w-full">
               <Carousel images={images} />
             </div>
           </div>

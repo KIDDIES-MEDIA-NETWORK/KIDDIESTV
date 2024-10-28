@@ -4,7 +4,7 @@ import Link from "next/link";
 const Devices = () => {
   return (
     <div className="bg-gradient-to-t from-[#E4E2F2] to-[#CCCAC4] h-[70vh] font-sniglet place-content-center items-center grid grid-cols-2">
-      <div data-aos="fade-right" className="col-span-1">
+      <div className="col-span-1">
         <Image
           src="/assets/png/mockup.png"
           width={5000}
@@ -14,7 +14,7 @@ const Devices = () => {
         />
       </div>
       
-      <div data-aos="fade-up" className="col-span-1 gap-4 flex items-start justify-center flex-col px-16">
+      <div  className="col-span-1 gap-4 flex items-start justify-center flex-col px-16">
         <h1 className="text-6xl font- font-lucky text-[#9C29B2] text-stroke-eading">
           Across all devices
         </h1>

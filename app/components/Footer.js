@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="wave wave4"></div>
       </section>
 
-      <div className="bg-[#343435] font-sniglet roun ded-t-[3rem] px-7 pb-7 sm:px-10">
+      <div className="bg-[#386299] font-sniglet roun ded-t-[3rem] px-7 pb-7 sm:px-10">
         <div className=" text-white flex flex-wrap items-start justify-between gap-6">
           <div className="flex flex-col">
             <h3 className="text-2xl text-orange pb-3">Quick Links</h3>
