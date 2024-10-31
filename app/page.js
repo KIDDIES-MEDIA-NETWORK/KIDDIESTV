@@ -4,7 +4,7 @@ import Header from "@/app/components/Header";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import "video.js/dist/video-js.css";
-// import "@/app/globals.css";
+import "@/app/globals.css";
 import FamFriendly from "@/app/components/FamFriendly";
 import Devices from "@/app/components/Devices";
 // Importing icons

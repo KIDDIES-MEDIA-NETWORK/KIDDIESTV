@@ -5,6 +5,7 @@ export const images = [
   "/assets/png/rorktv-logo.png",
   "/assets/png/klw.png",
   "/assets/png/lnkids.png",
+  "/assets/png/childrensministry.png",
 ]
 
 export const channels =[
@@ -43,6 +44,12 @@ export const channels =[
     icon: "/assets/png/lnkids.png",
     slug: 'lnkids',
     montage: "/assets/png/lnkids.png",
+  },
+  {
+    channel: "Children's Ministry & Schools",
+    icon: "/assets/png/childrensministry.png",
+    slug: 'childrensministry',
+    montage: "/assets/png/childrensministry.png",
   },
 ]
 
