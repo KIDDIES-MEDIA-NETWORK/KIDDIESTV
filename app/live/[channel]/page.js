@@ -138,11 +138,11 @@ const Station = ({params}) => {
           className="grid grid-cols-9 col-span-9 min-h-screen items-start px-5 md:px-10 md:pt-32"
         >
           <div className="col-span-6">
-            <div className="relative h-[75vh] w-[90%]   flex flex-col gap-3 items-center justify-center !rounded-xl  m-auto">
+            <div className="relative h-[75vh] w-[90%]   flex flex-col gap-3 items-center justify-center !rounded-xl  m-auto ">
               
               <video
                 ref={videoRef}
-                className="video-js vjs-big-play-centered object-cover  !rounded-xl h-full w-full absolute inset-0"
+                className="video-js vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover border-4 border-white !rounded-xl h-full w-full absolute inset-0"
                 autoPlay
                 playsInline
               />
