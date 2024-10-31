@@ -89,7 +89,7 @@ const Channels = () => {
             {channels.map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
-                className="relative h-44 w-80 group"
+                className="relative h-48 w-80 group"
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index + 3)}
                 onMouseLeave={() => setHoveredIndex(null)}

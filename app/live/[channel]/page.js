@@ -88,7 +88,7 @@ const Station = ({params}) => {
               <Link
               href={item?.slug}
                 key={index} 
-                className="relative w-full flex-none h-36 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
+                className="relative w-full flex-none h-40 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
@@ -117,7 +117,7 @@ const Station = ({params}) => {
                     src={item.icon}
                     width={500}
                     height={500}
-                    className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                    className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform object-c over group-hover:scale-105"
                     alt={`${item.channel} icon`}
                   />
                 )}
