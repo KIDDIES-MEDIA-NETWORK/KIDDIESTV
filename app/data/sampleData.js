@@ -22,16 +22,19 @@ export const channels =[
   },
   {
     channel: 'KLW TV',
+    slug: 'klwtv',
     icon: "/assets/png/klw.png",
     montage: "/assets/png/klw.png",
   },
   {
     channel: 'Rhapsody of Realities Kids TV',
+    slug: 'rorktv',
     icon: "/assets/png/rorktv-logo.png",
     montage: "/assets/png/rorktv-logo.png",
   },
   {
     channel: 'Kids fun Spot',
+    slug: 'kfstv',
     icon: "/assets/png/KFS.png",
     montage: "/assets/png/KFS.png",
   },

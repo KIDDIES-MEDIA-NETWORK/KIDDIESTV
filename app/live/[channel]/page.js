@@ -83,7 +83,7 @@ const Station = ({params}) => {
           <div className=" overflow-y-scroll flex flex-col gap-3 h-[80vh]">
             {channels.map((item, index) => (
               <Link
-              href={item.slug}
+              href={item?.slug}
                 key={index} 
                 className="relative w-full flex-none h-44 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredCard(index)}
