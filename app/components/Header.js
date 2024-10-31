@@ -55,10 +55,10 @@ const Header = () => {
         
         <Link href={"/contact"} className='flex items-center gap-1'>
           <LuPhoneCall />
-          Contact
+          Contact Us
         </Link>
 
-        <Link href={"/live"} className='flex items-center font-semibold gap-1 bg-gradient-to-t from-[#bc7d5b] to-[#ffb48d]  px-3 py-1.5 rounded-full text-white animate-pulse'>
+        <Link href={"/channels"} className='flex items-center font-semibold gap-1 bg-gradient-to-t from-[#bc7d5b] to-[#ffb48d]  px-3 py-1.5 rounded-full text-white animate-pulse'>
           <FaCirclePlay />
           Live TV
         </Link>
