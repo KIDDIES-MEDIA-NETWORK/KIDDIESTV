@@ -28,7 +28,7 @@ const Station = ({params}) => {
     // Fetch channel data using Axios
     const fetchChannel = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/channels/${channel}`);
+        const response = await axios.get(`https://lkn-kfic.onrender.com/channels/${channel}`);
         const { streamLink } = response?.data?.data;
         console.log(response)
         setStreamLink(streamLink);
