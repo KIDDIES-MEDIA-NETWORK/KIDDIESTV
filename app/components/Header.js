@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <div 
-      className={`font-sniglet px-24  flex justify-between  
+      className={`font-sniglet px-24   flex justify-between  
       transition-all duration-100 ease-in-out text-white
       ${isScrolled  || pathName !== "/home" ? 'bg-primary  shadow-lg items-center h-0 py-12' : 'bg-transparent items-start h-52 py-2'}`
     } 

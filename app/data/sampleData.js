@@ -4,18 +4,21 @@ export const images = [
   "/assets/png/lovetoons-TV.png",
   "/assets/png/rorktv-logo.png",
   "/assets/png/klw.png",
+  "/assets/png/lnkids.png",
 ]
 
 export const channels =[
   {
     channel: 'PCDL4Kids',
+    slug: 'PCDL4Kids',
     icon: "/assets/png/PCDL4Kids.png",
     montage: "/assets/png/PCDL4Kids.png",
   },
   {
     channel: 'Lovetoons TV',
+    slug: 'lovetoons-tv',
     icon: "/assets/png/lovetoons-TV.png",
-    montage: "/assets/png/lovetoons-TV.png",
+    montage: "/video/lovetoons.mp4",
   },
   {
     channel: 'KLW TV',
@@ -31,6 +34,12 @@ export const channels =[
     channel: 'Kids fun Spot',
     icon: "/assets/png/KFS.png",
     montage: "/assets/png/KFS.png",
+  },
+  {
+    channel: 'LN Kids TV',
+    icon: "/assets/png/lnkids.png",
+    slug: 'lnkids',
+    montage: "/assets/png/lnkids.png",
   },
 ]
 
