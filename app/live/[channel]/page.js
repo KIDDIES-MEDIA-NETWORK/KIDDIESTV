@@ -85,7 +85,7 @@ const Station = ({params}) => {
               <Link
               href={item?.slug}
                 key={index} 
-                className="relative w-full flex-none h-44 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
+                className="relative w-full flex-none h-36 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
