@@ -1,4 +1,5 @@
 "use client";
+import { Metadata } from "@/app/components/Metadata";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios"
 import Header from "@/app/components/Header";
@@ -10,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormatDate } from "@/app/utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
+
 
 const Station = ({params}) => {
   const videoRef = useRef(null);
@@ -72,6 +74,7 @@ const Station = ({params}) => {
 
   return (
     <div>
+        <Metadata channel={channel}/>
       <div className="fixed z-[100] top-0 w-full">
         <Header />
       </div>
@@ -142,7 +145,7 @@ const Station = ({params}) => {
               
               <video
                 ref={videoRef}
-                className="video-js vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover border-4 border-white !rounded-xl h-full w-full absolute inset-0"
+                className="video-js vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover border-8 border-white !rounded-xl h-full w-full absolute inset-0"
                 autoPlay
                 playsInline
               />
