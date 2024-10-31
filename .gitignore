@@ -13,6 +13,7 @@
 /.next/
 /out/
 /app/components/DONOTDELETE.js
+/app/components/DonotDeletehome.js
 
 # production
 /build
