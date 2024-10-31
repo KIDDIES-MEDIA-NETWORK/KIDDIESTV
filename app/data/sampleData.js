@@ -25,7 +25,7 @@ export const channels =[
     channel: 'KLW TV',
     slug: 'klwtv',
     icon: "/assets/png/klw.png",
-    montage: "/assets/png/klw.png",
+    montage: "/video/Montach.mp4",
   },
   {
     channel: 'Rhapsody of Realities Kids TV',

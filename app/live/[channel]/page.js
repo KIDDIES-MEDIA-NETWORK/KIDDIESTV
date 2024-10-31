@@ -1,4 +1,5 @@
 "use client";
+import { Metadata } from "@/app/components/Metadata";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios"
 import Header from "@/app/components/Header";
@@ -10,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormatDate } from "@/app/utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
+
 
 const Station = ({params}) => {
   const videoRef = useRef(null);
@@ -72,6 +74,7 @@ const Station = ({params}) => {
 
   return (
     <div>
+        <Metadata channel={channel}/>
       <div className="fixed z-[100] top-0 w-full">
         <Header />
       </div>
@@ -85,7 +88,7 @@ const Station = ({params}) => {
               <Link
               href={item?.slug}
                 key={index} 
-                className="relative w-full flex-none h-36 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
+                className="relative w-full flex-none h-40 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
@@ -114,7 +117,7 @@ const Station = ({params}) => {
                     src={item.icon}
                     width={500}
                     height={500}
-                    className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                    className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform object-c over group-hover:scale-105"
                     alt={`${item.channel} icon`}
                   />
                 )}
@@ -142,7 +145,7 @@ const Station = ({params}) => {
               
               <video
                 ref={videoRef}
-                className="video-js vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover border-4 border-white !rounded-xl h-full w-full absolute inset-0"
+                className="video-js vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover border-8 border-white !rounded-xl h-full w-full absolute inset-0"
                 autoPlay
                 playsInline
               />
