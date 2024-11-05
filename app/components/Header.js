@@ -6,6 +6,7 @@ import {usePathname } from 'next/navigation';
 import { LuPhoneCall } from "react-icons/lu";
 import { FaCirclePlay } from 'react-icons/fa6';
 import { FaUserPlus, FaUserCircle } from "react-icons/fa";
+import { IoIosMenu } from "react-icons/io";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +52,7 @@ const Header = () => {
         className="w-16 md:w-20"
       />
       
-      <nav className={`hidden md:flex  justify-between items-center text-lg gap-8 ${isScrolled || pathName !== "/" ? 'md:mt-0' :'md:mt-3'}`}>
+      {/* <nav className={`hidden md:flex  justify-between items-center text-lg gap-8 ${isScrolled || pathName !== "/" ? 'md:mt-0' :'md:mt-3'}`}>
         <Link href={"/"}>Home</Link>
         
         <Link href={"/contact"} className='flex items-center gap-1'>
@@ -76,7 +77,11 @@ const Header = () => {
           </div>
         )}
         </div>
-      </nav>
+      </nav> */}
+
+      <div>
+        <IoIosMenu size={23} />
+      </div>
     </div>
   );
 }

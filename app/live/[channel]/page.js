@@ -155,11 +155,11 @@ const Station = ({ params }) => {
             </div>
           </div>
 
-          <div className="col-span-3 pt-10 md:pt-0">
+          <div className="col-span-3">
             <h1 className="font-modak font-bold text-4xl hidden md:block text-center text-stroke text-[#073168]">
               Live Comments
             </h1>
-            <div className=" bg-[#edffaf] relative  rounded-xl shadow-lg font-sniglet">
+            <div className=" bg-[#edffaf] relative  md:rounded-xl shadow-lg font-sniglet">
               <p className=" py-5 px-5 border-b-2 text-2xl text-stroke-top   font-modak">
                 Top Chat
               </p>
