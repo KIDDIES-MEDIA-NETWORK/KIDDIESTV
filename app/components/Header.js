@@ -34,10 +34,10 @@ const Header = () => {
     <div 
       className={`font-sniglet px-24   flex justify-between  
       transition-all duration-100 ease-in-out text-white
-      ${isScrolled  || pathName !== "/home" ? 'bg-primary  shadow-lg items-center h-0 py-12' : 'bg-transparent items-start h-52 py-2'}`
+      ${isScrolled  || pathName !== "/" ? 'bg-primary  shadow-lg items-center h-0 py-12' : 'bg-transparent items-start h-52 py-2'}`
     } 
       style={{
-        backgroundImage: isScrolled  || pathName !== "/home" ? 'none' : `url(/assets/png/header.png)`,
+        backgroundImage: isScrolled  || pathName !== "/" ? 'none' : `url(/assets/png/header.png)`,
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
@@ -50,7 +50,7 @@ const Header = () => {
         alt="loveworld kiddies network Logo"
       />
       
-      <nav className={`flex  justify-between items-center text-lg gap-8 ${isScrolled || pathName !== "/home" ? 'md:mt-0' :'md:mt-3'}`}>
+      <nav className={`flex  justify-between items-center text-lg gap-8 ${isScrolled || pathName !== "/" ? 'md:mt-0' :'md:mt-3'}`}>
         <Link href={"/"}>Home</Link>
         
         <Link href={"/contact"} className='flex items-center gap-1'>

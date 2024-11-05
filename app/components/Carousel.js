@@ -26,7 +26,7 @@ const Carousel = ({ images }) => {
   return (
     <div className="w-full flex items-center justify-center">
       <div
-        className="relative w-[60%] mx-auto h-fit overflow-hidden"
+        className="relative w-[60%] xl:w-[40%] mx-auto h-fit overflow-hidden"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 25%, black 75%, transparent)",
@@ -47,7 +47,7 @@ const Carousel = ({ images }) => {
               key={index}
               src={image}
               alt={`Slide ${index}`}
-              className="w-36 h-fit object-cover"
+              className="w-36 xl:w-24 h-fit object-cover"
             />
           ))}
         </div>
