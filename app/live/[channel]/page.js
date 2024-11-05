@@ -1,7 +1,7 @@
 "use client";
 import { Metadata } from "@/app/components/Metadata";
 import { useEffect, useRef, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import Header from "@/app/components/Header";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
@@ -11,9 +11,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormatDate } from "@/app/utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
+import Swiper from "@/app/components/Swiper";
 
-
-const Station = ({params}) => {
+const Station = ({ params }) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ const Station = ({params}) => {
   const [showEmoji, setShowEmoji] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const token = false;
-  const{channel} = params
+  const { channel } = params;
 
   const [streamLink, setStreamLink] = useState("");
 
@@ -30,9 +30,11 @@ const Station = ({params}) => {
     // Fetch channel data using Axios
     const fetchChannel = async () => {
       try {
-        const response = await axios.get(`https://lkn-kfic.onrender.com/channels/${channel}`);
+        const response = await axios.get(
+          `https://lkn-kfic.onrender.com/channels/${channel}`
+        );
         const { streamLink } = response?.data?.data;
-        console.log(response)
+        console.log(response);
         setStreamLink(streamLink);
       } catch (error) {
         console.error("Error fetching channel:", error);
@@ -70,24 +72,22 @@ const Station = ({params}) => {
     };
   }, [streamLink]);
 
-
-
   return (
     <div>
-        <Metadata channel={channel}/>
+      <Metadata channel={channel} />
       <div className="fixed z-[100] top-0 w-full">
         <Header />
       </div>
-      <div className="grid grid-cols-11">
-        <div className=" pt-24 bg-[#D0D549] col-span-2 px-4  shadow-lg w-full">
+      <div className="md:grid grid-cols-11">
+        <div className=" pt-20 bg-[#D0D549] hidden md:block col-span-2 px-4  shadow-lg w-full">
           <h2 className="text-stroke-top text-[#073168] font-modak text-[28px] py-2 text-center">
             Other Channels
           </h2>
-          <div className=" overflow-y-scroll flex flex-col gap-3 h-[80vh]">
+          <div className=" overflow-y-scroll flex flex-col gap-3 h-[78vh] rounded-xl">
             {channels.map((item, index) => (
               <Link
-              href={item?.slug}
-                key={index} 
+                href={item?.slug}
+                key={index}
                 className="relative w-full flex-none h-40 rounded-2xl shadow-lg hover:shadow-xl  transition-transform duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -108,7 +108,7 @@ const Station = ({params}) => {
                       src={item.montage}
                       width={500}
                       height={500}
-                      className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                      className="rounded-2xl bg-[#EDFFAF] p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
                       alt={`${item.channel} montage`}
                     />
                   )
@@ -117,14 +117,16 @@ const Station = ({params}) => {
                     src={item.icon}
                     width={500}
                     height={500}
-                    className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform object-c over group-hover:scale-105"
+                    className="rounded-2xl bg-[#EDFFAF] p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform object-c over group-hover:scale-105"
                     alt={`${item.channel} icon`}
                   />
                 )}
 
-                <div className="bg-gradient-to-t from-[#282828] rounded-2xl to-transparent absolute top-0 left-0 w-full h-full"></div>
+                <div className="bg-gradient-to-t from-[#28282881] rounded-2xl to-transparent absolute top-0 left-0 w-full h-full"></div>
                 <div className="absolute bottom-0 left-0 text-white flex w-full justify-between p-4 items-center mt-2">
-                  <h3 className="font-sniglet text-base">{item.channel}</h3>
+                  <h3 className="font-sniglet text-base text-black">
+                    {item.channel}
+                  </h3>
                 </div>
               </Link>
             ))}
@@ -138,52 +140,23 @@ const Station = ({params}) => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          className="grid grid-cols-9 col-span-9 min-h-screen items-start px-5 md:px-10 md:pt-32"
+          className="md:grid grid-cols-9 col-span-9 min-h-screen items-start sm:px-5 md:px-10 md:pt-24"
         >
-          <div className="col-span-6">
-            <div className="relative h-[75vh] w-[90%]   flex flex-col gap-3 items-center justify-center !rounded-xl  m-auto ">
-              
+          <div className="col-span-6 pt-16 md:pt-0">
+            <div className="relative h-full md:w-[90%]   flex flex-col gap-3 items-center justify-center md:rounded-xl  m-auto ">
               <video
                 ref={videoRef}
-                className="video-js vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover border-8 border-white !rounded-xl h-full w-full absolute inset-0"
+                className="video-js  vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover md:border-8 border-white  h-full w-full absolute inset-0"
                 autoPlay
                 playsInline
               />
 
-              {/* <div className="bg-[#3aa2a8] shadow-lg pt-4 rounded-2xl  flex flex-col gap-2">
-                <div className="flex gap-2 items-center px-5">
-                  <p className="bg-red-800 text-sm font-semibold text-white px-3 py-1.5 rounded-full font-nunito animate-pulse">
-                    on now
-                  </p>
-                  <p className="bg-orange text-white text-sm px-3 py-1.5 font-nunito rounded-full">
-                    13M+ watching
-                  </p>
-                </div>
-                <div className="px-5">
-                  <h3 className="text-2xl text-[#282828] text-stroke-top font-modak">
-                    {sampleData[0].title}
-                  </h3>
-                  <small className=" text-[#073168]">
-                    {sampleData[0]?.starts}
-                  </small>
-                </div>
-                <p className="font-sniglet text-white px-5">
-                  {sampleData[0]?.description}
-                </p>
-                <div className="flex items-center gap-2 text-orange bg-[#282828] px-5 py-3 rounded-b-2xl">
-                  {" "}
-                  Up next:
-                  <p className="font-sniglet text-white text-lg ">
-                    {" "}
-                    {sampleData[1]?.title}
-                  </p>
-                </div>
-              </div> */}
+                <Swiper />
             </div>
           </div>
 
-          <div className="col-span-3 ">
-            <h1 className="font-modak font-bold text-5xl text-center text-stroke text-[#073168]">
+          <div className="col-span-3 pt-10 md:pt-0">
+            <h1 className="font-modak font-bold text-4xl hidden md:block text-center text-stroke text-[#073168]">
               Live Comments
             </h1>
             <div className=" bg-[#edffaf] relative  rounded-xl shadow-lg font-sniglet">

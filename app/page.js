@@ -41,7 +41,7 @@ export default function Home() {
             loop
             muted
             alt="video card1"
-            className="absolute md:top-44 lg:top-48 xl:top-[8.5rem] 2xl:top-40 flex flex-col justify-center items-center right-[50%] text-center translate-x-[50%] brightness-[0.2] float-none m-auto rounded-3xl object-cover w-[69%] h-[68vh]"
+            className="absolute md:top-44 lg:top-[32vh] xl:top-[32vh] 2xl:top-40 flex flex-col justify-center items-center right-[50%] text-center translate-x-[50%] brightness-[0.2] float-none m-auto rounded-3xl object-cover w-[69%] h-[68vh]"
 
             height={300}
             width={300}
