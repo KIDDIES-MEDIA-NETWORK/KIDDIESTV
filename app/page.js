@@ -41,12 +41,13 @@ export default function Home() {
             loop
             muted
             alt="video card1"
-            className="absolute top-44 flex flex-col justify-center items-center right-[50%] text-center translate-x-[50%] brightness-[0.2] float-none m-auto rounded-3xl object-cover w-[69%] h-[30rem]"
+            className="absolute md:top-44 lg:top-[32vh] xl:top-[32vh] 2xl:top-40 flex flex-col justify-center items-center right-[50%] text-center translate-x-[50%] brightness-[0.2] float-none m-auto rounded-3xl object-cover w-[69%] h-[68vh]"
+
             height={300}
             width={300}
           />
-          <div className="absolute top-16  z-[10] font-sniglet  text-white flex flex-col justify-center items-center w-full  h-screen right-[50%] text-center translate-x-[50%]">
-            <div className=" px-10 py-10 bg-gradient-to-t from-[#2E212981] to-[#2E212981] shadow-md rounded-xl flex items-center flex-col ">
+          <div className="absolute top-16 xl:top-16 z-[10] font-sniglet  text-white flex flex-col justify-center items-center w-full  h-screen right-[50%] text-center translate-x-[50%]">
+            <div className=" px-10 py-10 xl:py-0  bg-[#2E212981]  xl:bg-transparent shadow-md xl:shadow-none rounded-xl flex items-center flex-col ">
               <h3 className="text-7xl font-jua text-stroke-heading font-bold text-white ">
                 A Home <br />
                 for every Child
@@ -72,7 +73,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="w-full">
+            <div className="w-full ">
               <Carousel images={images} />
             </div>
           </div>

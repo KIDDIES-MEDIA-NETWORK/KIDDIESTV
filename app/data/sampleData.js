@@ -8,6 +8,15 @@ export const images = [
   "/assets/png/childrensministry.png",
 ]
 
+export const carousels = [
+  { src: "/assets/png/espees.webp", alt: "Image 1" },
+  { src: "/assets/png/lightup.png", alt: "Image 2" },
+  { src: "/assets/png/lrtb.png",    alt: "Image 3" },
+  { src: "/assets/png/espees.webp", alt: "Image 1" },
+  { src: "/assets/png/lightup.png", alt: "Image 2" },
+  { src: "/assets/png/lrtb.png",    alt: "Image 3" },
+];
+
 export const channels =[
   {
     channel: 'PCDL4Kids',
@@ -19,13 +28,13 @@ export const channels =[
     channel: 'Lovetoons TV',
     slug: 'lovetoons-tv',
     icon: "/assets/png/lovetoons-TV.png",
-    montage: "/video/lovetoons.mp4",
+    montage: "/video/lovetoonsmontage.mp4",
   },
   {
     channel: 'KLW TV',
     slug: 'klwtv',
     icon: "/assets/png/klw.png",
-    montage: "/video/Montach.mp4",
+    montage: "/video/lkw.mp4",
   },
   {
     channel: 'Rhapsody of Realities Kids TV',
