@@ -146,7 +146,7 @@ const Station = ({ params }) => {
             <div className="relative h-full md:w-[90%]   flex flex-col gap-3 items-center justify-center md:rounded-xl  m-auto ">
               <video
                 ref={videoRef}
-                className="video-js  vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover md:border-8 border-white  h-full w-full absolute inset-0"
+                className="video-js  vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover md:rounded-xl h-full w-full absolute inset-0"
                 autoPlay
                 playsInline
               />
