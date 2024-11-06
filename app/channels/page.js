@@ -13,7 +13,7 @@ const Channels = () => {
 
   return (
     <div
-      className="bg-gradien t-to-t font-sniglet bg-opacity-50 from-[#bc7d5b81] to-[#ffb48d81]  min-h-screen"
+      className="bg-gradi ent-to-t font-sniglet from-[#bc7d 5b81] to-[#ffb48 d81] min-h-screen"
       style={{
         backgroundImage: `url(/assets/png/channelbg.jpg)`,
         backgroundSize: "cover",
@@ -25,24 +25,28 @@ const Channels = () => {
         <Header />
       </div>
 
-      <div className="pb-20 pt-36 z-[10000] px-24">
-        <div>
-          <h2 className="text-3xl mb-3">Continue watching...</h2>
-          <div className="flex flex-wrap gap-5">
+      <div style={{
+            backgroundImage: `url(/assets/png/livebg.png)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }} className="pb-20 md:pt-32 pt-20 z-[10000] md:px-24">
+        <div className="ml-5">
+          <h2 className="text-2xl text-center md:text-left font-semibold capitalize md:text-3xl font-lucky text-gray-900  mb-3">My favorites</h2>
+          <div className="flex gap-3 w-full overflow-x-auto md:overflow-visible md:flex-wrap custom-scrollbar">
             {channels.slice(1, 3).map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
-                className="relative h-44 w-80 group"
+                className="relative h-full md:h-44 w-80 md:w-60 group flex-shrink-0"
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {hoveredIndex === index ? (
-                  // Conditionally render video or image based on the file type of montage
                   item.montage.endsWith(".mp4") ? (
                     <video
                       src={item.montage}
-                      className="rounded-2xl h-full group-hover:shadow-md  object-cover group-hover:shadow-slate-600 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                      className="rounded-xl h-72 w-80 md:w-full md:h-full object-cover group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105"
                       autoPlay
                       loop
                       muted
@@ -52,28 +56,27 @@ const Channels = () => {
                       src={item.montage}
                       width={500}
                       height={500}
-                      className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                      className="rounded-xl bg-slate-900 p-5 h-72 w-80 md:w-full md:h-full object-contain group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105"
                       alt={`${item.channel} montage`}
                     />
                   )
                 ) : (
                   <Image
-                    src={item.icon}
+                    src={item.image || item.icon}
                     width={500}
                     height={500}
-                    className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                    className={`rounded-xl bg-slate-900  h-72 w-80 md:w-full md:h-full ${item?.image ? 'object-cover' : "object-contain"} group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105`}
                     alt={`${item.channel} icon`}
                   />
                 )}
                 <p className="text-xl mt-2 text-center">{item.channel}</p>
                 {hoveredIndex === index && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="w-40 -ml-12 fill-slate-500 -mr-10 text-center">
+                    <p className="w-40 text-center">
                       <DotLottieReact
                         src="/assets/svgs/lottie.json"
                         loop
                         autoplay
-                        color="black"
                       />
                     </p>
                   </div>
@@ -83,13 +86,13 @@ const Channels = () => {
           </div>
         </div>
 
-        <div className="mt-16">
-          <h2 className="text-3xl my-3">All channels</h2>
-          <div className="flex flex-wrap gap-y-10 gap-x-4">
+        <div className="mt-16 ml-5">
+          <h2 className="text-2xl md:text-3xl font-semibold text-center md:text-left font-lucky text-gray-900 my-3">All channels</h2>
+          <div className="flex gap-x-4 gap-y-12 w-full overflow-x-auto md:overflow-visible md:flex-wrap custom-scrollbar">
             {channels.map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
-                className="relative h-48 w-80 group"
+                className="relative h-full md:h-44 w-80 md:w-60 group flex-shrink-0"
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index + 3)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -98,7 +101,7 @@ const Channels = () => {
                   item.montage.endsWith(".mp4") ? (
                     <video
                       src={item.montage}
-                      className=" rounded-2xl h-full group-hover:shadow-md object-cover group-hover:shadow-slate-600 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                      className="rounded-xl h-72 w-80 md:w-full md:h-full object-cover group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105"
                       autoPlay
                       loop
                       muted
@@ -108,16 +111,16 @@ const Channels = () => {
                       src={item.montage}
                       width={500}
                       height={500}
-                      className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-lg transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                      className="rounded-xl bg-slate-900 p-5 h-72 w-80 md:w-full md:h-full object-contain group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105"
                       alt={`${item.channel} montage`}
                     />
                   )
                 ) : (
                   <Image
-                    src={item.icon}
+                    src={item.image || item.icon}
                     width={500}
                     height={500}
-                    className="rounded-2xl bg-slate-900 p-5 h-full group-hover:shadow-lg transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                    className={`rounded-xl bg-slate-900  h-72 w-80 md:w-full md:h-full ${item?.image ? 'object-cover' : "object-contain"} group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105`}
                     alt={`${item.channel} icon`}
                   />
                 )}
@@ -128,12 +131,11 @@ const Channels = () => {
                       <MdAdd />
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="w-40 -ml-12 fill-slate-500 -mr-10 text-center">
+                      <p className="w-40  text-center">
                         <DotLottieReact
                           src="/assets/svgs/lottie.json"
                           loop
                           autoplay
-                          color="black"
                         />
                       </p>
                     </div>

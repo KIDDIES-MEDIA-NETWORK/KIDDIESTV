@@ -165,7 +165,7 @@ const Station = ({ params }) => {
               </p>
               <div className="relative">
                 {!token && (
-                  <div className="absolute z-[1000] w-full top-0 left-0 px-5 py-4 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
+                  <div className="absolute z-[90] w-full top-0 left-0 px-5 py-4 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
                     <div className="font-sniglet flex gap-2">
                       <Image
                         src="/assets/png/notallow.png"

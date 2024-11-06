@@ -128,18 +128,7 @@ body {
   /* margin-bottom: 20px; */
   /* background-color: #4779f7; */
 }
-/* h1 {
-  color: white;
-  text-shadow: -1px -1px 1px black;
-  font-family: 'Dosis', sans-serif;
-  text-transform: uppercase;
-  font-size: 250%;
-  position: absolute;
-  top: 20%;
-  letter-spacing: 1px;
-  width: 100%;
-  text-align: center;
-} */
+
 .wave {
   position: absolute;
   bottom: 0;
@@ -231,3 +220,44 @@ body {
   background: #D345CF; 
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
+
+
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+.slide-out {
+  animation: slideOut 0.5s ease-out;
+}
+
+
+/* Hide scrollbar for all elements with `custom-scrollbar` class */
+@media (max-width: 768px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .custom-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
