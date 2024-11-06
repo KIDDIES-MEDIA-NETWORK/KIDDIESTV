@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Devices = () => {
   return (
-    <div className="bg-gradient-to-t from-[#E4E2F2] to-[#CCCAC4] h-[70vh] font-sniglet place-content-center items-center grid grid-cols-2">
+    <div className="bg-gradient-to-t from-[#E4E2F2] to-[#CCCAC4] h-[70vh] font-sniglet place-content-center items-center md:grid grid-cols-2">
       <div className="col-span-1">
         <Image
           src="/assets/png/mockup.png"
@@ -14,8 +14,8 @@ const Devices = () => {
         />
       </div>
       
-      <div  className="col-span-1 gap-4 flex items-start justify-center flex-col px-16">
-        <h1 className="text-6xl font- font-lucky text-[#9C29B2] text-stroke-eading">
+      <div  className="col-span-1 gap-4 flex items-start justify-center flex-col px-5 md:px-16">
+        <h1 className="text-3xl md:text-3xl lg:text-6xl text-center md:text-left font-lucky text-[#9C29B2] text-stroke-eading">
           Across all devices
         </h1>
         <p className="text-lg text-[#282828]">

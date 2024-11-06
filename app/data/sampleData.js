@@ -28,7 +28,7 @@ export const channels =[
     channel: 'Lovetoons TV',
     slug: 'lovetoons-tv',
     icon: "/assets/png/lovetoons-TV.png",
-    image: "/assets/png/lovetoon.png",
+    image: "/assets/png/lovetoo.png",
     montage: "/video/lovetoon.mp4",
   },
   {

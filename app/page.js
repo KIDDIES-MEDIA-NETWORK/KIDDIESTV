@@ -28,11 +28,10 @@ export default function Home() {
 
         <div className="relative">
           <Image
-            src="/assets/png/bgnew.png"
+            src="/assets/png/newbg.png"
             width={3000}
             height={3000}
-            // layout="fill"
-            className="brightness-[0.8] object- w-full h-screen"
+            className="brightness-[0.8] hidden md:block object- w-full h-screen"
             alt="background"
           />
           <video
@@ -41,26 +40,26 @@ export default function Home() {
             loop
             muted
             alt="video card1"
-            className="absolute md:top-44 lg:top-[32vh] xl:top-[32vh] 2xl:top-40 flex flex-col justify-center items-center right-[50%] text-center translate-x-[50%] brightness-[0.2] float-none m-auto rounded-3xl object-cover w-[69%] h-[68vh]"
+            className="static sm:absolute  sm:top-44 lg:top-[32vh] xl:top-[32vh] 2xl:top-40 flex flex-col justify-center items-center sm:right-[50%] text-center sm:translate-x-[50%] brightness-[0.2] float-none m-auto md:rounded-3xl object-cover w-full sm:w-[69%] h-[68vh]"
 
             height={300}
             width={300}
           />
-          <div className="absolute top-16 xl:top-16 z-[10] font-sniglet  text-white flex flex-col justify-center items-center w-full  h-screen right-[50%] text-center translate-x-[50%]">
-            <div className=" px-10 py-10 xl:py-0  bg-[#2E212981]  xl:bg-transparent shadow-md xl:shadow-none rounded-xl flex items-center flex-col ">
-              <h3 className="text-7xl font-jua text-stroke-heading font-bold text-white ">
+          <div className="absolute top-20 md:top-16 xl:top-16 z-[10] font-sniglet  text-white flex flex-col justify-center items-center w-full  md:h-screen right-[50%] text-center translate-x-[50%]">
+            <div className=" px-10 py-5 xl:py-0    rounded-xl flex items-center flex-col ">
+              <h3 className="text-3xl sm:text-4xl md:text-7xl font-jua text-stroke-heading font-bold text-white ">
                 A Home <br />
                 for every Child
               </h3>
-              <h3 className="text-4xl font-bold font-jua text-[#F8DD2D] text- ">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-jua text-[#F8DD2D] text- ">
                 Loveworld Kiddies Network
               </h3>
 
               <Link
                 href="/channels"
-                className="bg-gradient-to-t from-[#bc7d5b] to-[#ffb48d]  shadow-xl border-2    rounded-full pr-12 pl-5 mt-4   text-2xl text-center flex items-center mx-auto "
+                className="bg-gradient-to-t from-[#bc7d5b] to-[#ffb48d]  shadow-xl border-2    rounded-full pr-7 md:pr-12 pl-5 mt-4  text-lg md:text-2xl text-center flex items-center mx-auto "
               >
-                <p className="w-40 -ml-12 fill-slate-500 -mr-10 text-center">
+                <p className="md:w-40 w-20 md:-ml-12 -ml-6 fill-slate-500 md:-mr-10 -mr-5 text-center">
                   <DotLottieReact
                     src="/assets/svgs/lottie.json"
                     loop
@@ -73,7 +72,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="w-full ">
+            <div className="w-full hidden md:block">
               <Carousel images={images} />
             </div>
           </div>
