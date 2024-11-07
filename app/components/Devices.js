@@ -14,7 +14,7 @@ const Devices = () => {
         />
       </div>
       
-      <div  className="col-span-1 gap-4 flex items-start justify-center flex-col px-5 md:px-16">
+      <div  className="col-span-1 gap-4 flex items-start justify-center flex-col px-5 sm:px-10 md:px-16">
         <h1 className="text-3xl md:text-3xl lg:text-6xl text-center md:text-left mx-auto md:m-0 font-lucky text-[#9C29B2] text-stroke-eading">
           Across all devices
         </h1>
