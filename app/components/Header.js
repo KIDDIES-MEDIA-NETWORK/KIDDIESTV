@@ -7,9 +7,11 @@ import { LuPhoneCall } from "react-icons/lu";
 import { FaCirclePlay } from 'react-icons/fa6';
 import { FaUserPlus, FaUserCircle } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
+import SidebarMenu from './SideBar';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const pathName = usePathname ()
   console.log(pathName, "pathnnaammmeee")
@@ -35,7 +37,7 @@ const Header = () => {
     <div 
       className={`font-sniglet px-5 md:px-24   flex justify-between  
       transition-all duration-100 ease-in-out text-white
-      ${isScrolled  || pathName !== "/" ? 'bg-primary  shadow-lg items-center h-0 py-8 md:py-10' : 'bg-transparent items-start h-52 py-2'}`
+      ${isScrolled  || pathName !== "/" ? 'bg-primary  shadow-lg items-center h-0 py-8 md:py-10' : 'bg-transparent items-start md:h-52 h-28 py-2'}`
     } 
       style={{
         backgroundImage: isScrolled  || pathName !== "/" ? 'none' : `url(/assets/png/header.png)`,
@@ -43,16 +45,16 @@ const Header = () => {
         backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
       }}
-    >
+    >{menuOpen && <SidebarMenu setMenuOpen={setMenuOpen} />}
       <Image 
         src="/assets/png/loveworld-kiddies-network.png" 
         width={110} 
         height={80} 
         alt="loveworld kiddies network Logo"
-        className="w-16 md:w-20"
+        className="w-16 md:w-24"
       />
       
-      {/* <nav className={`hidden md:flex  justify-between items-center text-lg gap-8 ${isScrolled || pathName !== "/" ? 'md:mt-0' :'md:mt-3'}`}>
+      <nav className={`hidden md:flex  justify-between items-center text-lg gap-8 ${isScrolled || pathName !== "/" ? 'md:mt-0' :'md:mt-3'}`}>
         <Link href={"/"}>Home</Link>
         
         <Link href={"/contact"} className='flex items-center gap-1'>
@@ -73,14 +75,14 @@ const Header = () => {
           <div className='flex absolute top-10  right-0 rounded-xl flex-col  bg-white shadow-md w-[20rem] py-5 text-black '>
             <Link href="/login" className="hover:bg-primary border-y hover:border-none   flex items-center gap-2  py-3 px-4 hover:text-white" ><FaUserCircle /> Log in to account</Link>
             <Link href="/register" className="hover:bg-primary py-3 px-4 flex items-center gap-2 hover:text-white" ><FaUserPlus /> Create an account</Link>
-            <Link href="/register" className="hover:bg-primary py-3 px-3.5 hover:text-white flex items-center gap-2" ><Image src="/assets/png/espeesCoin.png" height={10} width={10} className="w-[22px] h-full object-cover " alt="user icon"/>Partner with Us</Link>
+            <Link href="/partner" className="hover:bg-primary py-3 px-3.5 hover:text-white flex items-center gap-2" ><Image src="/assets/png/espeesCoin.png" height={10} width={10} className="w-[22px] h-full object-cover " alt="user icon"/>Partner with Us</Link>
           </div>
         )}
         </div>
-      </nav> */}
+      </nav>
 
-      <div>
-        <IoIosMenu size={23} />
+      <div className="block md:hidden" onClick={() => setMenuOpen(true)}>
+        <IoIosMenu size={27} />
       </div>
     </div>
   );

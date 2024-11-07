@@ -28,13 +28,15 @@ export const channels =[
     channel: 'Lovetoons TV',
     slug: 'lovetoons-tv',
     icon: "/assets/png/lovetoons-TV.png",
-    montage: "/video/lovetoonsmontage.mp4",
+    image: "/assets/png/lovetoo.png",
+    montage: "/video/lovetoon.mp4",
   },
   {
     channel: 'KLW TV',
     slug: 'klwtv',
     icon: "/assets/png/klw.png",
-    montage: "/video/lkw.mp4",
+    image: "/assets/png/klwImage.png",
+    montage: "/video/klw.mp4",
   },
   {
     channel: 'Rhapsody of Realities Kids TV',
