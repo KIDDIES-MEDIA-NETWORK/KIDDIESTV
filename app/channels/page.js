@@ -31,9 +31,9 @@ const Channels = () => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }} className="pb-20 md:pt-32 pt-20 z-[10000] md:px-24">
-        <div className="ml-5">
-          <h2 className="text-2xl text-center md:text-left font-semibold capitalize md:text-3xl font-lucky text-gray-900  mb-3">My favorites</h2>
-          <div className="flex gap-3 w-full overflow-x-auto md:overflow-visible md:flex-wrap custom-scrollbar">
+        <div className="">
+          <h2 className="text-2xl text-center md:text-left font-semib old capitalize md:text-3xl font-lucky text-[#ddd] m d:text-gray-900  mb-3">My favorites</h2>
+          <div className="flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
             {channels.slice(1, 3).map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
@@ -86,9 +86,9 @@ const Channels = () => {
           </div>
         </div>
 
-        <div className="mt-16 ml-5">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center md:text-left font-lucky text-gray-900 my-3">All channels</h2>
-          <div className="flex gap-x-4 gap-y-12 w-full overflow-x-auto md:overflow-visible md:flex-wrap custom-scrollbar">
+        <div className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-semib old text-center md:text-left font-lucky text-[#DDDDDD] m d:text-gray-900 my-3">All channels</h2>
+          <div className="flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
             {channels.map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
