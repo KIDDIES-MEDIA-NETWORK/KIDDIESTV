@@ -37,7 +37,7 @@ const Header = () => {
     <div 
       className={`font-sniglet px-5 md:px-24   flex justify-between  
       transition-all duration-100 ease-in-out text-white
-      ${isScrolled  || pathName !== "/" ? 'bg-primary  shadow-lg items-center h-0 py-8 md:py-10' : 'bg-transparent items-start md:h-52 h-28 py-2'}`
+      ${isScrolled  || pathName !== "/" ? 'bg-primary  shadow-lg items-center h-0 py-8 md:py-10' : 'bg-transparent items-start md:h-52 h-[6rem] py-2'}`
     } 
       style={{
         backgroundImage: isScrolled  || pathName !== "/" ? 'none' : `url(/assets/png/header.png)`,
