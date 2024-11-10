@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BiArrowToTop, BiLogoFacebook } from "react-icons/bi";
 import { CiMail, CiPhone } from "react-icons/ci";
@@ -14,17 +15,18 @@ const Footer = () => {
         <div className="wave wave4"></div>
       </section>
 
-      <div className="bg-[#343435] font-sniglet roun ded-t-[3rem] px-7 pb-7 sm:px-10">
+      <div className="bg-[#386299] font-sniglet roun ded-t-[3rem] px-5 sm:px-10 pb-7 sm:px-24">
         <div className=" text-white flex flex-wrap items-start justify-between gap-6">
           <div className="flex flex-col">
-            <h3 className="text-2xl pb-3">Quick Links</h3>
+            <h3 className="text-2xl text-orange pb-3">Quick Links</h3>
             <Link href="/orders">LiveTV</Link>
             <Link href="/user">Watch Videos</Link>
-            <Link href="/auth/login">Subscriptions</Link>
+            <Link href="/auth/login">Give a seed</Link>
             <Link href="/favorites">KingsChat</Link>
+            <Link href="/favorites">Login | Register</Link>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-2xl pb-3">Enquiry</h3>
+            <h3 className="text-2xl text-orange pb-3">Enquiry</h3>
             <Link href="/about">About Us</Link>
             <Link href="/contact">Contact Us</Link>
             <Link href="/contact">Our Channels</Link>
@@ -32,7 +34,7 @@ const Footer = () => {
             <Link href="/faqs">FAQS</Link>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-2xl pb-3">Support</h3>
+            <h3 className="text-2xl text-orange pb-3">Support</h3>
             <Link href="/about" className="flex items-center gap-1">
               <CiMail /> Email Support
             </Link>
@@ -40,30 +42,26 @@ const Footer = () => {
               <CiPhone /> Phone Support
             </Link>
             <Link href="/dashboard" className="flex items-center gap-1">
-              <FaWhatsapp /> Whatsapp Support
+              <Image src="/assets/png/kingschat.webp" alt="Kingschat logo icon" width={20} height={20}/>
+               KingsChat Support
             </Link>
           </div>
           <div className="">
-            <h3 className="text-xl pb-3">Connect with Us</h3>
+            <h3 className="text-xl text-orange pb-3">Connect with Us</h3>
             <div className="flex gap-3">
               <Link
                 href="/about"
-                className="p-3 bg-[#9C29B2] text-white rounded-[100%]"
+                className=""
               >
-                <BiLogoFacebook />
+                <Image src="/assets/png/kingschat.webp" alt="Kingschat logo icon" width={40} height={40}/>
               </Link>
               <Link
                 href="/contact"
-                className="p-3 bg-[#9C29B2] text-white rounded-[100%]"
+                className="p-3 bg-primary text-white rounded-[100%]"
               >
                 <FaXTwitter />{" "}
               </Link>
-              <Link
-                href="/dashboard"
-                className="p-3 bg-[#9C29B2] text-white rounded-[100%]"
-              >
-                <FaWhatsapp />
-              </Link>
+              
             </div>
           </div>
         </div>

@@ -1,11 +1,80 @@
+export const images = [
+  "/assets/png/PCDL4Kids.png",
+  "/assets/png/KFS.png",
+  "/assets/png/lovetoons-TV.png",
+  "/assets/png/rorktv-logo.png",
+  "/assets/png/klw.png",
+  "/assets/png/lnkids.png",
+  "/assets/png/childrensministry.png",
+]
+
+export const carousels = [
+  { src: "/assets/png/espees.webp", alt: "Image 1" },
+  { src: "/assets/png/lightup.png", alt: "Image 2" },
+  { src: "/assets/png/lrtb.png",    alt: "Image 3" },
+  { src: "/assets/png/espees.webp", alt: "Image 1" },
+  { src: "/assets/png/lightup.png", alt: "Image 2" },
+  { src: "/assets/png/lrtb.png",    alt: "Image 3" },
+  { src: "/assets/png/kidsonline.png",    alt: "Image 3" },
+];
+
+export const channels = [
+  {
+    channel: 'PCDL4Kids',
+    slug: 'PCDL4Kids',
+    icon: "/assets/png/PCDL4Kids.png",
+    montage: "/assets/png/PCDL4Kids.png",
+  },
+  {
+    channel: 'Lovetoons TV',
+    slug: 'lovetoons-tv',
+    icon: "/assets/png/lovetoons-TV.png",
+    image: "/assets/png/lovetoo.png",
+    montage: "/video/lovetoon.mp4",
+  },
+  {
+    channel: 'KLW TV',
+    slug: 'klwtv',
+    icon: "/assets/png/klw.png",
+    image: "/assets/png/klwImage.png",
+    montage: "/video/klw.mp4",
+  },
+  {
+    channel: 'Rhapsody of Realities Kids TV',
+    slug: 'rorktv',
+    icon: "/assets/png/rorktv-logo.png",
+    montage: "/assets/png/rorktv-logo.png",
+  },
+  {
+    channel: 'Kids fun Spot',
+    slug: 'kfstv',
+    icon: "/assets/png/KFS.png",
+    montage: "/assets/png/KFS.png",
+  },
+  {
+    channel: 'LN Kids TV',
+    icon: "/assets/png/lnkids.png",
+    slug: 'lnkids',
+    montage: "/assets/png/lnkids.png",
+  },
+  {
+    channel: "Children's Ministry & Schools",
+    icon: "/assets/png/childrensministry.png",
+    slug: 'childrensministry',
+    montage: "/assets/png/childrensministry.png",
+  },
+]
+
+
 export const sampleData = [
     {
       title: "My Rhapsody of Realities",
       image: "/video/ror.png",
       gif: "/video/ror.webp",
       description:
-        "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations",
+        "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations. Prepare to learn from the life of David",
       current: true,
+      starts:"3.00pm",
       
     },
     {
@@ -43,7 +112,7 @@ export const sampleData = [
     },
     {
       title: "Derren's House Rules",
-      image: "/video/derren.png",
+      image: "/video/derren.webp",
       gif: "/video/derren-.webp",
       description:
         "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations",
@@ -83,7 +152,7 @@ export const sampleData = [
     },
     {
       title: "Knowledge Hub",
-      image: "/video/wildlife.jpeg",
+      image: "/video/wildlife.jpg",
       gif: "/video/wildlife.webp",
       description:
         "Story of King david, as he transcended from the life of shepherding the flock to shepherding the nations",
@@ -98,3 +167,116 @@ export const sampleData = [
       active: false,
     },
   ];
+
+  const currentDate = new Date()
+
+  export const sampleComment = [
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Promise Okechukwu",
+      comment: "This is amazing",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "David Preferred",
+      comment: "Glorraayyy",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+    { name: "Prosper Graced",
+      comment: "This is amazing and i love it soo much thank You Pastor",
+      created_at: currentDate,
+      imageSrc: "/assets/png/profiledefault.png"
+
+    },
+  ]

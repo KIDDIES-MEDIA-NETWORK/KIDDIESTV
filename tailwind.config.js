@@ -14,6 +14,7 @@ module.exports = {
         gradfrom: "#9736AD",
         gradto: "#3281FF",
         orange: "#F77B11",
+        secondary: "#FFB28A",
       },
       fontFamily: {
         schoolbell: ['"Schoolbell"', "sans-serif"],
@@ -22,6 +23,7 @@ module.exports = {
         modak:['"Modak"', 'sans-serif'],
         lucky:['"Luckiest Guy"', 'sans-serif'],
         sniglet:['"Sniglet"', 'sans-serif'],
+        jua:['"Jua"', 'sans-serif'],
       },
     },
   },

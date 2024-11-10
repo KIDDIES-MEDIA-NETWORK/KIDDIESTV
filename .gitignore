@@ -13,9 +13,11 @@
 /.next/
 /out/
 /app/components/DONOTDELETE.js
+/app/components/DonotDeletehome.js
 
 # production
 /build
+.env
 
 # misc
 .DS_Store

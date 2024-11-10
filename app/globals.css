@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
 @import url('https://fonts.cdnfonts.com/css/retro-morey');
 
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
@@ -14,14 +16,31 @@
   }
 }
 
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Add a custom Tailwind animation */
+@layer utilities {
+  .animate-slide {
+    animation: slide 20s linear infinite;
+  }
+}
+
+
 body {
     font-family: 'Gloria Halleluyah', sans-serif;
 }
 
 .text {
-  width: 35ch;
+  width: 36ch;
   border-right: 3px solid;
-  animation: blink 1s step-end infinite, type 7s steps(29) forwards;
+  animation: type 5s steps(29) forwards, blink 1s step-end 7;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -35,6 +54,11 @@ body {
 @keyframes type {
   0% {
     width: 0;
+    border-color: black;
+  }
+  100% {
+    width: 36ch;
+    border-color: transparent; /* Makes the cursor disappear after typing */
   }
 }
 
@@ -100,22 +124,11 @@ body {
   width: 100%;
   height: 200px;
   overflow: hidden;
-  filter: invert(0.8);
+  /* filter: invert(0.8); */
   /* margin-bottom: 20px; */
   /* background-color: #4779f7; */
 }
-/* h1 {
-  color: white;
-  text-shadow: -1px -1px 1px black;
-  font-family: 'Dosis', sans-serif;
-  text-transform: uppercase;
-  font-size: 250%;
-  position: absolute;
-  top: 20%;
-  letter-spacing: 1px;
-  width: 100%;
-  text-align: center;
-} */
+
 .wave {
   position: absolute;
   bottom: 0;
@@ -123,7 +136,7 @@ body {
   width: 100%;
   height: 20vh;
   margin-bottom: -40px;
-  background: url(https://i.imgur.com/DLD3N2t.png);
+  background: url("../public/assets/png/footer.png");
   background-position:top;
   /* filter: invert(1); */
   background-size: 100vw 20vh;
@@ -174,7 +187,77 @@ body {
 }
 
 .text-stroke {
-  -webkit-text-stroke: 0.1px rgb(240, 240, 255);
+  -webkit-text-stroke: 0.2px rgb(240, 240, 255)!important;
   text-shadow: 2px 2px #535353c5;
   
 }
+.text-stroke-heading {
+  /* -webkit-text-stroke: 0.5px rgb(240, 240, 255)!important; */
+  text-shadow: 5px 5px 7px #282828;
+  /* line-height: 5px; */
+  
+}
+.text-stroke-top {
+  -webkit-text-stroke: 0.5px rgb(240, 240, 255);
+  
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  background: #D345CF; 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+.slide-out {
+  animation: slideOut 0.5s ease-out;
+}
+
+
+/* Hide scrollbar for all elements with `custom-scrollbar` class */
+@media (max-width: 768px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .custom-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
