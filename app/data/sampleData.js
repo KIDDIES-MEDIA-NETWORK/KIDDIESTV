@@ -15,9 +15,10 @@ export const carousels = [
   { src: "/assets/png/espees.webp", alt: "Image 1" },
   { src: "/assets/png/lightup.png", alt: "Image 2" },
   { src: "/assets/png/lrtb.png",    alt: "Image 3" },
+  { src: "/assets/png/kidsonline.png",    alt: "Image 3" },
 ];
 
-export const channels =[
+export const channels = [
   {
     channel: 'PCDL4Kids',
     slug: 'PCDL4Kids',
