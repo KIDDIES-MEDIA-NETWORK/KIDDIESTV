@@ -21,7 +21,7 @@ const Station = ({ params }) => {
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
-  const token = false;
+  const token = localStorage.getItem("gpt64");
   const { channel } = params;
 
   const [streamLink, setStreamLink] = useState("");
