@@ -34,7 +34,7 @@ const TextInput = ({
           </div>
         </div>
         {error && (
-          <div className="text-red-500 text-sm font-semibold">{error}</div>
+          <div className="text-red-500 text-sm ">{error}</div>
         )}
       </div>
     );
