@@ -261,3 +261,14 @@ body {
   }
 }
 
+/* Hides scrollbars for all input fields */
+input::-webkit-scrollbar {
+  display: none;
+}
+
+input {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+

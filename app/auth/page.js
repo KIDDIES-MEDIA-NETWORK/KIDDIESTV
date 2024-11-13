@@ -1,9 +1,10 @@
 import React from 'react'
+import AuthLayout from '../components/AuthLayout'
 
 const Register = () => {
   return (
     <div>
-      login
+      <AuthLayout action={"Sign up"} heading={"Create an account"}/>
     </div>
   )
 }
