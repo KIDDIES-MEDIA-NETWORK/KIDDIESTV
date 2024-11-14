@@ -91,10 +91,6 @@ const AuthLayout = ({ heading, action }) => {
     return isError;
   };
 
-  // const register = async () => {
-  //   let isError = validateEmail();
-  //   if (isError) return;
-  // };
   const register = async () => {
     let isError = validateRegister();
     if (isError) return;

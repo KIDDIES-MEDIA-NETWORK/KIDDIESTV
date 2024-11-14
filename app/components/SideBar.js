@@ -128,7 +128,7 @@ const SidebarMenu = ({ setMenuOpen }) => {
           </div>
         </Link>
         <Link
-          href="/login"
+          href="/auth/login"
           className="text-[#282828] bg-button animate-pulse hover:animate-none flex items-center justify-between border-b px-5 py-8"
         >
           <div className="flex items-center gap-3">
