@@ -274,7 +274,7 @@ const Station = ({ params }) => {
                     </small>
                   </div>
                 )}
-                <div className="flex sm:static flex-col gap-3 max-h-[45vh] sm:max-h-[50vh] fixed bottom-24 w-full sm:w-max bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
+                <div className="flex sm:static flex-col gap-3 h-[45vh] sm:max-h-[50vh] fixed bottom-24 w-full sm:w-max bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
                   {comments?.length === 0 && (<div>No comment added yet</div>)}
                   {comments?.map((item, index) => (
                     <div
