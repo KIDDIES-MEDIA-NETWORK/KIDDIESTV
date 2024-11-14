@@ -12,17 +12,31 @@ import Link from "next/link";
 import { FormatDate } from "@/app/utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
 import Swiper from "@/app/components/Swiper";
+import { useAuth } from "@/app/context/AuthContext";
+
 
 const Station = ({ params }) => {
+  const lastCommentRef = useRef(null);
   const videoRef = useRef(null);
   const playerRef = useRef(null);
   const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isClick, setClick] = useState(false);
+  const [comments, setComments] = useState([]);
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const token = localStorage.getItem("gpt64");
   const { channel } = params;
+  const { email, userInfo } = useAuth();
+
+
+  const scrollToLastComment = () => {
+    if (lastCommentRef.current) {
+      lastCommentRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  };
+
 
   const [streamLink, setStreamLink] = useState("");
 
@@ -72,9 +86,79 @@ const Station = ({ params }) => {
     };
   }, [streamLink]);
 
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(
+        `https://lkn-kfic.onrender.com/api/comments/${channel}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setComments(response?.data?.data || []);
+      scrollToLastComment();
+
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+
+
+  const createComment = async () => {
+    if (newPostComment.trim() === "") return;
+    const body = {
+      text:newPostComment,
+      userId: userInfo._id,
+    };
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        `https://lkn-kfic.onrender.com/api/comments/${channel}`,
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Pass the token in the headers
+          },
+        }
+      );
+      console.log(res);
+
+      setIsLoading(false);
+      if (!res?.data?.success) return
+
+      if (res?.data?.success) {
+        setNewPostComment(""); // Clear the comment input
+        fetchComments().then(() => {
+          // Scroll to the last comment after comments are fetched
+          scrollToLastComment();
+        });
+      }
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+     
+    }
+  }
+
+  useEffect(() => {
+    // Fetch all comments on initial load
+
+    if (channel) {
+      fetchComments();
+    }
+  }, [channel, token ]);
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // Prevent default Enter action (new line in input)
+      createComment(); // Send the comment
+    }
+  };
+
+
   return (
     <div>
-      <Metadata channel={channel} />
       <div className="fixed z-[100] top-0 w-full">
         <Header />
       </div>
@@ -160,7 +244,7 @@ const Station = ({ params }) => {
               Live Comments
             </h1>
             <div className=" bg-[#edffaf] relative  md:rounded-xl shadow-lg font-sniglet">
-              <p className=" py-5 px-5 border-b-2 text-2xl text-stroke-top   font-modak">
+              <p className=" py-3 md:py-5  px-5 border-b-2 text-2xl text-stroke-top   font-modak">
                 Top Chat
               </p>
               <div className="relative">
@@ -190,36 +274,39 @@ const Station = ({ params }) => {
                     </small>
                   </div>
                 )}
-                <div className="flex relative flex-col gap-3 max-h-[50vh] overflow-y-scroll pt-5 px-5 ">
-                  {sampleComment?.map((item, index) => (
+                <div className="flex sm:static flex-col gap-3 h-[45vh] sm:max-h-[50vh] fixed bottom-24 w-full sm:w-max bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
+                  {comments?.length === 0 && (<div>No comment added yet</div>)}
+                  {comments?.map((item, index) => (
                     <div
                       key={index}
+                      ref={index === comments.length - 1 ? lastCommentRef : null} // Attach the ref to the last comment
                       className="grid grid-cols-10 items-center place-items-between"
                     >
                       <Image
                         className="col-span-1"
-                        src={item.imageSrc}
+                        src={item.imageSrc || "/assets/png/profiledefault.png"}
                         width={20}
                         height={20}
                         alt="user profile icon"
                       />
                       <div className="col-span-7 flex-col flex">
                         <p className="text-primary font-medium  pr-2">
-                          {item.name}
+                          {item?.user?.username}
                         </p>
-                        <p>{item?.comment}</p>
+                        <p>{item?.text}</p>
                       </div>
                       <div className="col-span-2">
-                        <small>{FormatDate(item.created_at)}</small>
+                        <small>{FormatDate(item.createdAt)} <span className="hidden md:inline">ago</span></small>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="w-full px-5 flex items-center justify-between">
+                <div className="w-full px-5 flex items-center justify-between fixed bottom-0 bg-[#edffaf] md:static">
                   <input
-                    disabled={!token}
+                    disabled={isLoading || !token}
                     value={newPostComment}
                     onChange={(e) => setNewPostComment(e.target.value)}
+                    onKeyDown={handleKeyPress}
                     placeholder="Type and press enter..."
                     className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
                   />
