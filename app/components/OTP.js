@@ -1,13 +1,19 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import '@/app/globals.css'
+import { useAuth } from '../context/AuthContext';
+import axios from "axios";
+
 
 const OTPVerification = ({setNext}) => {
-  const [timeLeft, setTimeLeft] = useState(120); // 2 minutes in seconds
+  const [loading, setLoading] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(300); // 2 minutes in seconds
   const [otpInputs, setOtpInputs] = useState(Array(6).fill(''));
   const timerRef = useRef(null);
   const inputRefs = useRef(Array.from({ length: 6 }, () => React.createRef()));
-  const email = "user@example.com"; // Simulated email for demonstration
+  // const email = "user@example.com"; // Simulated email for demonstration
+  const { email } = useAuth();
+
 
   useEffect(() => {
     inputRefs.current[0].current.focus(); // Focus on the first input when the component mounts
@@ -45,12 +51,34 @@ const OTPVerification = ({setNext}) => {
     if (e.key === 'e') e.preventDefault(); // Prevent entering 'e' in number input
   };
 
-  const verifyOTP = () => {
+  const verifyOTP = async () => {
     const otp = otpInputs.join('');
+    const otpNumber = Number(otp); // or use parseInt(otp, 10)
+    const body={
+      email,
+      verificationCode: otpNumber,
+    }
+    console.log(body)
+    
     if (otp.length === 6) {
       if (timeLeft > 0) {
-        // alert(`Verifying OTP: ${otp}`);
-        setNext('option')
+        try {
+          setLoading(true);
+          const res = await axios.post(
+            `https://lkn-kfic.onrender.com/api/auth/verify/otp`,
+            body
+          );
+          console.log(res);
+    
+          setLoading(false);
+          if (!res?.data?.success) return
+          setNext('option')
+
+        } catch (error) {
+          setLoading(false);
+          console.log(error);
+          
+        }
       } else {
         alert('OTP has expired. Please request a new one.');
       }
@@ -77,9 +105,9 @@ const OTPVerification = ({setNext}) => {
     <div className=" font-sniglet flex items-center justify-center min-h-screen text-white p-4">
       <div className="bg-gray-800 p-3 py-8 sm:p-8 flex md:block flex-col justify-center items-center rounded-xl shadow-lg max-w-md w-full">
         <h1 className="text-3xl  mb-4">OTP Verification</h1>
-        <p className="mb-6">
+        {email && (<p className="mb-6">
           Enter the OTP you received to <span className="text-[#D4916D]">{email}</span>
-        </p>
+        </p>)}
         <div className="sm:flex space-x-1 md:space-x-2 mb-6 custom-scrollbar">
           {otpInputs.map((_, index) => (
             <input

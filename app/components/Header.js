@@ -73,8 +73,8 @@ const Header = () => {
         </button>
         { isHovered && (
           <div className='flex absolute top-10  right-0 rounded-xl flex-col  bg-white shadow-md w-[20rem] py-5 text-black '>
-            <Link href="/login" className="hover:bg-primary border-y hover:border-none   flex items-center gap-2  py-3 px-4 hover:text-white" ><FaUserCircle /> Log in to account</Link>
-            <Link href="/register" className="hover:bg-primary py-3 px-4 flex items-center gap-2 hover:text-white" ><FaUserPlus /> Create an account</Link>
+            <Link href="/auth/login" className="hover:bg-primary border-y hover:border-none   flex items-center gap-2  py-3 px-4 hover:text-white" ><FaUserCircle /> Log in to account</Link>
+            <Link href="/auth" className="hover:bg-primary py-3 px-4 flex items-center gap-2 hover:text-white" ><FaUserPlus /> Create an account</Link>
             <Link href="/partner" className="hover:bg-primary py-3 px-3.5 hover:text-white flex items-center gap-2" ><Image src="/assets/png/espeesCoin.png" height={10} width={10} className="w-[22px] h-full object-cover " alt="user icon"/>Partner with Us</Link>
           </div>
         )}

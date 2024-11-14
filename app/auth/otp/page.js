@@ -5,7 +5,7 @@ import Image from "next/image"
 import Verified from '@/app/components/Verified'
 
 const OTP = () => {
-  const[next, setNext] = useState("option")
+  const[next, setNext] = useState("otp")
   return (
     <div className="md:grid grid-cols-2">
       {next == 'otp' && (<OTPVerification setNext={setNext} />)}
