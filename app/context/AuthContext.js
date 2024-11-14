@@ -1,7 +1,8 @@
-"use client"
 // context/AuthContext.js
-import { createContext, useContext,useEffect, useState } from 'react';
+"use client";
+import { createContext, useContext, useEffect, useState } from 'react';
 import axios from "axios";
+
 // Create the context
 export const AuthContext = createContext();
 
@@ -9,42 +10,48 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [email, setEmail] = useState("");
     const [userInfo, setUserInfo] = useState("");
-    const token = localStorage.getItem("gpt64")
-
-
-    const fetchUser = async() => {
-        try {
-            const res = await axios.get(
-              `https://lkn-kfic.onrender.com/api/user`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`, // Pass the token in the headers
-                },
-              }
-            );
-            console.log(res);
-      
-            if (!res?.data?.success) return 
-           setUserInfo(res?.data?.user)
-          } catch (error) {
-            console.log(error);
-          }
-    }
+    const [token, setToken] = useState(null);
 
     useEffect(() => {
-        fetchUser()
-    }, [token])
+        // Check if running in the browser before accessing localStorage
+        if (typeof window !== 'undefined') {
+            const storedToken = localStorage.getItem("gpt64");
+            setToken(storedToken);
+        }
+    }, []);
 
-    console.log(userInfo)
+    const fetchUser = async () => {
+        if (!token) return; // Only fetch if token is available
 
-  return (
-    <AuthContext.Provider value={{ email, setEmail, userInfo}}>
-      {children}
-    </AuthContext.Provider>
-  );
+        try {
+            const res = await axios.get(
+                `https://lkn-kfic.onrender.com/api/user`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Pass the token in the headers
+                    },
+                }
+            );
+            console.log(res);
+
+            if (!res?.data?.success) return;
+            setUserInfo(res?.data?.user);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUser();
+    }, [token]);
+
+    console.log(userInfo);
+
+    return (
+        <AuthContext.Provider value={{ email, setEmail, userInfo }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
-
-
 export const useAuth = () => useContext(AuthContext);
-
