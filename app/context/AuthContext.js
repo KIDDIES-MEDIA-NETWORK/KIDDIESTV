@@ -7,7 +7,7 @@ import io from 'socket.io-client';
 export const AuthContext = createContext();
 
 // Initialize socket connection
-const socket = io('http://localhost:8000');
+const socket = io('https://lkn-kfic.onrender.com');
 
 export const AuthProvider = ({ children }) => {
     const [email, setEmail] = useState("");
