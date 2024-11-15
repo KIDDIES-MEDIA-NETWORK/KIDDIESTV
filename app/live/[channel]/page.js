@@ -12,6 +12,7 @@ import Link from "next/link";
 import { FormatDate } from "@/app/utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
 import Swiper from "@/app/components/Swiper";
+import HeartAnimation from "@/app/components/Heart";
 import { useAuth } from "@/app/context/AuthContext";
 
 
@@ -28,7 +29,7 @@ const Station = ({ params }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const token = localStorage.getItem("gpt64");
   const { channel } = params;
-  const { email, userInfo } = useAuth();
+  const { email, userInfo, handleSendHeart } = useAuth();
 
 
   const scrollToLastComment = () => {
@@ -234,6 +235,7 @@ const Station = ({ params }) => {
                 autoPlay
                 playsInline
               />
+              <HeartAnimation />
 
                 <Swiper />
             </div>
@@ -247,8 +249,8 @@ const Station = ({ params }) => {
               <p className=" py-3 md:py-5  px-5 border-b-2 text-2xl text-stroke-top   font-modak">
                 Top Chat
               </p>
-              <div className="relative">
-                {!token && (
+              <div className="relat ive">
+                {/* {!token && (
                   <div className="absolute z-[90] w-full top-0 left-0 px-5 py-4 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
                     <div className="font-sniglet flex gap-2">
                       <Image
@@ -273,8 +275,8 @@ const Station = ({ params }) => {
                       to be able to comment
                     </small>
                   </div>
-                )}
-                <div className="flex sm:static flex-col gap-3 h-[45vh] sm:max-h-[50vh] fixed bottom-24 w-full sm:w-max bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
+                )} */}
+                <div className="flex sm:static flex-col gap-3 h-[45vh] sm:max-h-[50vh] fixed bottom-24 w-full sm:w-full bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
                   {comments?.length === 0 && (<div>No comment added yet</div>)}
                   {comments?.map((item, index) => (
                     <div
@@ -301,7 +303,7 @@ const Station = ({ params }) => {
                     </div>
                   ))}
                 </div>
-                <div className="w-full px-5 flex items-center justify-between fixed bottom-0 bg-[#edffaf] md:static">
+                <div className="w-full px-5 flex items-center justify-between rea fixed bottom-0 bg-[#edffaf] md:static">
                   <input
                     disabled={isLoading || !token}
                     value={newPostComment}
@@ -313,10 +315,10 @@ const Station = ({ params }) => {
                   <Heart
                     size={29}
                     isClick={isClick}
-                    onClick={() => setClick(!isClick)}
+                    onClick={handleSendHeart}
                   />
                   <div
-                    className="relative cursor-pointer"
+                    className=" cursor-pointer"
                     onClick={() => setShowEmoji(!showEmoji)}
                   >
                     <picture>
