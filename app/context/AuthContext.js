@@ -14,10 +14,10 @@ export const AuthProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState("");
     const [token, setToken] = useState(null);
     const [hearts, setHearts] = useState([]);
+    const [heartCount, setHeartCount] = useState([]);
     const [viewers, setViewers] = useState(0);
     const [channelSlug, setChannelSlug] = useState(0);
     const [channelInfo, setChannelInfo] = useState();
-    console.log(channelSlug)
 
 
     useEffect(() => {
@@ -48,10 +48,24 @@ export const AuthProvider = ({ children }) => {
         setTimeout(() => {
             setHearts((prevHearts) => prevHearts.filter((heart) => heart.id !== newHeart.id));
         }, 3000); // Heart animation duration
+
     };
 
+    const fetchHeartCount = async (channelId) => {
+      console.log(channelId)
+        try {
+          const response = await axios.get(`https://lkn-kfic.onrender.com/channels/${channelId}/heart`);
+          console.log(response.data.heartCount)
+          setHeartCount(response.data.heartCount)
+          return response.data.heartCount;
+        } catch (error) {
+          console.error('Error fetching heart count:', error);
+          return 0;
+        }
+      };
+      
+
     const handleSendHeart = async (channelId) => {
-        console.log(channelId)
         const heartData = { left: `${Math.random() * 80 + 10}%` }; // Customize heart data as needed
         addHeart(heartData);
         socket.emit('sendHeart', heartData); // Emit heart event to other connected users
@@ -61,22 +75,14 @@ export const AuthProvider = ({ children }) => {
         //   const response = await axios.put(`http://localhost:/8000/api/hearts/${channelId}`);
           const response = await axios.put(`https://lkn-kfic.onrender.com/channels/${channelId}/heart`);
           console.log('Updated heart count:', response);
+          fetchHeartCount(channelId)
         } catch (error) {
           console.error('Error incrementing heart count:', error);
         }
       };
 
 
-      const fetchHeartCount = async (channelId) => {
-        try {
-          const response = await axios.get(`https://lkn-kfic.onrender.com/channels/${channelId}/heart`);
-          
-          return response.data.heartCount;
-        } catch (error) {
-          console.error('Error fetching heart count:', error);
-          return 0;
-        }
-      };
+      
       const fetchChannel = async (channelId) => {
         try {
           const response = await axios.get(`https://lkn-kfic.onrender.com/channels/${channelId}`);

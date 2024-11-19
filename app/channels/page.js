@@ -20,26 +20,39 @@ const Channels = () => {
 
   // Fetch heart count for each channel
   useEffect(() => {
-    const fetchAllHeartCounts = async () => {
-      const counts = {};
-      const countsCom = {};
-      for (const channel of channels) {
-        const count = await fetchHeartCount(channel.slug); // Use the slug as channelId
-        const res = await fetchChannel(channel.slug); // Use the slug as channelId
-        // console.log(res)
-        counts[channel.slug] = count;
-        countsCom[channel.slug] = res.length;
-        setChannelSlug(channel.slug)
-         // Store heart count by channel slug
-        }
-        setHeartCounts(counts); // Set the heart counts in state
-        setCommentCounts(countsCom); // Set the heart counts in state
+    const fetchCounts = async () => {
+      const heartCountPromises = channels.map(async (channel) => {
+        const heartCount = await fetchHeartCount(channel.slug);
+        return { slug: channel.slug, heartCount };
+      });
+
+      const commentCountPromises = channels.map(async (channel) => {
+        const comments = await fetchChannel(channel.slug);
+        return { slug: channel.slug, commentCount: comments.length };
+      });
+
+      // Resolve all promises for heart counts
+      const heartCountsData = await Promise.all(heartCountPromises);
+      const heartsObject = heartCountsData.reduce((acc, curr) => {
+        acc[curr.slug] = curr.heartCount;
+        return acc;
+      }, {});
+
+      // Resolve all promises for comment counts
+      const commentCountsData = await Promise.all(commentCountPromises);
+      const commentsObject = commentCountsData.reduce((acc, curr) => {
+        acc[curr.slug] = curr.commentCount;
+        return acc;
+      }, {});
+
+      setHeartCounts(heartsObject);
+      setCommentCounts(commentsObject);
     };
 
-    fetchAllHeartCounts(); // Fetch heart counts when the component mounts
-  }, [fetchHeartCount]);
+    fetchCounts();
+  }, [fetchHeartCount, fetchChannel]);
 
-  // console.log(commentCounts)
+  console.log(heartCounts)
 
   return (
     <div
@@ -68,7 +81,7 @@ const Channels = () => {
           <h2 className="text-2xl text-center md:text-left font-semib old capitalize md:text-3xl font-lucky text-[#ddd] m d:text-gray-900  mb-3">
             My favorites
           </h2>
-          <div className="flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
+          <div className="hidden 2xl:flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
             {channels.slice(1, 3).map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
@@ -124,7 +137,7 @@ const Channels = () => {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-2xl md:text-3xl font-semib old text-center md:text-left font-lucky text-[#DDDDDD] m d:text-gray-900 my-3">
+          <h2 className="text-2xl md:text-3xl font-semib old text-center md:text-left font-lucky text-[#fff] m d:text-gray-900 my-3">
             All channels
           </h2>
           <div className="flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
@@ -165,13 +178,13 @@ const Channels = () => {
                     alt={`${item.channel} icon`}
                   />
                 )}
-                <div  className="text-xl mt-2 text-center flex items-center gap-5">
+                <div  className="text-base mt-2 text-center flex items-center gap-5">
                   <p>{item.channel}</p>
-                  <p className="flex items-center gap-1">
+                  <p className="flex text-sm items-center gap-1">
                     <FaHeart color="red" />
                     {heartCounts[item.slug] || 0}
                   </p>
-                  <p className="flex items-center gap-1">
+                  <p className="flex text-sm items-center gap-1">
                     <FaComments color="#386299" />
                     {commentCounts[item.slug]  || 0}
                   </p>

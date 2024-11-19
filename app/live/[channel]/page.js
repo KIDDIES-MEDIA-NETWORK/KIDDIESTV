@@ -16,8 +16,9 @@ import HeartAnimation from "@/app/components/Heart";
 import { useAuth } from "@/app/context/AuthContext";
 import io from "socket.io-client";
 import { FaRegEye } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
 
-const socket = io('https://lkn-kfic.onrender.com');
+const socket = io("https://lkn-kfic.onrender.com");
 // const socket = io("http://localhost:8000");
 
 const Station = ({ params }) => {
@@ -31,10 +32,11 @@ const Station = ({ params }) => {
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
-  const token = localStorage.getItem("gpt64");
+  const [token, setToken] = useState(null);
   const [channelInfo, setChannelInfo] = useState();
+  // const [hearts, setHearts] = useState();
   const { channel } = params;
-  const { email, userInfo, handleSendHeart } = useAuth();
+  const { heartCount, userInfo, handleSendHeart, fetchHeartCount } = useAuth();
 
   const [viewers, setViewers] = useState();
   const scrollToLastComment = () => {
@@ -45,6 +47,14 @@ const Station = ({ params }) => {
       });
     }
   };
+
+  useEffect(() => {
+    // Check if code is running in the browser
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("gpt64");
+      setToken(storedToken); // Set the token in state
+    }
+  }, []); // Run once on mount
 
   const [streamLink, setStreamLink] = useState("");
   useEffect(() => {
@@ -63,6 +73,15 @@ const Station = ({ params }) => {
   }, [channel]);
 
   // console.log(viewers, "dataaaaa")
+
+  // const fetchAllHeartCounts = async () => {
+  //   const res = await fetchHeartCount(channel); // Use the slug as channelId
+  //   // console.log(res)
+  //   setHearts(res)
+  // }
+  useEffect(() => {
+    fetchHeartCount(channel); // Fetch heart counts when the component mounts
+  }, [channel]);
 
   useEffect(() => {
     // Fetch channel data using Axios
@@ -144,7 +163,6 @@ const Station = ({ params }) => {
           },
         }
       );
-      console.log(res);
 
       setIsLoading(false);
       if (!res?.data?.success) return;
@@ -258,9 +276,16 @@ const Station = ({ params }) => {
                 {" "}
                 <div>
                   <small>You are watching</small>
-                  <h1 className="text-xl capitalize font-bold">{channelInfo?.name}</h1>
+                  <h1 className="text-xl capitalize font-bold">
+                    {channelInfo?.name}
+                  </h1>
                 </div>
-                <div className="hidden md:flex justify-between items-center gap-2"><FaRegEye /> {viewers}</div>
+                <div className="flex items-center gap-4">
+                  {/* <div className="hidden md:flex justify-between items-center gap-2"><FaHeart /> {heartCount}</div> */}
+                  <div className="hidden md:flex justify-between items-center gap-2">
+                    <FaRegEye /> {viewers}
+                  </div>
+                </div>
               </div>
               <HeartAnimation />
 
@@ -272,13 +297,13 @@ const Station = ({ params }) => {
             <h1 className="font-modak font-bold text-4xl hidden md:block text-center text-stroke text-[#073168]">
               Live Comments
             </h1>
-            <div className=" bg-[#edffaf] relative  md:rounded-xl shadow-lg font-sniglet">
+            <div className=" bg-[#edffaf] sm:relative  md:rounded-xl shadow-lg font-sniglet">
               <p className=" py-3 md:py-5  px-5 border-b-2 text-2xl text-stroke-top   font-modak">
                 Top Chat
               </p>
               <div className="relat ive">
-                {/* {!token && (
-                  <div className="absolute z-[90] w-full top-0 left-0 px-5 py-4 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
+                {!token && (
+                  <div className="absolute z-[90] w-full top-0 left-0 px-5 py-2 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
                     <div className="font-sniglet flex gap-2">
                       <Image
                         src="/assets/png/notallow.png"
@@ -287,7 +312,7 @@ const Station = ({ params }) => {
                         height={30}
                         alt="not allowed"
                       />
-                      <p className="text-xl font-sniglet">
+                      <p className="text-lg font-sniglet">
                         You are not logged in
                       </p>
                     </div>
@@ -295,16 +320,16 @@ const Station = ({ params }) => {
                       Kindly{" "}
                       <Link
                         href="/auth/login"
-                        className="text-primary text-lg underline "
+                        className="text-primary  underline "
                       >
                         login
                       </Link>{" "}
                       to be able to comment
                     </small>
                   </div>
-                )} */}
-                <div className="flex sm:static flex-col gap-3 h-[45vh] sm:max-h-[60vh] fixed bottom-24 w-full sm:w-full bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
-                  {comments?.length === 0 && <div>No comment added yet</div>}
+                )}
+                <div className="flex sm:static flex-col gap-3 h-[ 45vh] max-h-[32vh] sm:max-h-[50vh] fix ed bo ttom-24 w-full sm:w-full bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
+                  {comments?.length === 0 && <div className="text-center mx-auto">No comment added yet</div>}
                   {comments?.map((item, index) => (
                     <div
                       key={index}
@@ -335,14 +360,14 @@ const Station = ({ params }) => {
                     </div>
                   ))}
                 </div>
-                <div className="w-full px-5 flex items-center justify-between rea fixed bottom-0 bg-[#edffaf] md:rounded-xl md:static">
+                <div className="w-full px-5 flex items-center justify-between rea fix ed bo ttom-0 bg-[#edffaf] md:rounded-xl md:static">
                   <input
                     disabled={isLoading || !token}
                     value={newPostComment}
                     onChange={(e) => setNewPostComment(e.target.value)}
                     onKeyDown={handleKeyPress}
                     placeholder="Type and press enter..."
-                    className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
+                    className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none  bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
                   />
                   <Heart
                     size={29}
@@ -363,20 +388,26 @@ const Station = ({ params }) => {
                     </picture>
                   </div>
                   {showEmoji && (
-                    <div className="text-sm absolute z-10   top-0 right-0 md:right-0">
-                      <EmojiPicker
-                        onEmojiClick={(data, e) => {
-                          let sym = data.unified.split("-");
-                          let codesArray = [];
-                          sym.forEach((el) => codesArray.push("0x" + el));
-                          let emoji = String.fromCodePoint(...codesArray);
-                          setNewPostComment(
-                            (prevComment) => prevComment + emoji
-                          );
-                        }}
-                        previewConfig={{ showPreview: false }}
-                        size={14}
-                      />
+                    <div>
+                      <div
+                        className="fixed inset-0 cursor-pointer bg-transparent w-full h-screen z-10"
+                        onClick={() => setShowEmoji(!showEmoji)}
+                      ></div>
+                      <div className="text-sm absolute z-10   sm:top-0 bottom-20 right-0 md:right-0">
+                        <EmojiPicker
+                          onEmojiClick={(data, e) => {
+                            let sym = data.unified.split("-");
+                            let codesArray = [];
+                            sym.forEach((el) => codesArray.push("0x" + el));
+                            let emoji = String.fromCodePoint(...codesArray);
+                            setNewPostComment(
+                              (prevComment) => prevComment + emoji
+                            );
+                          }}
+                          previewConfig={{ showPreview: false }}
+                          size={14}
+                        />
+                      </div>
                     </div>
                   )}
                 </div>

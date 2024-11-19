@@ -21,7 +21,7 @@ const HeartAnimation = () => {
   // };
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full  -translate-x-5 md:-translate-y-10">
       {/* <button
         onClick={addHeart}
         className="absolute bottom-14 right-4 bg-pink-500 p-2 rounded-full"
