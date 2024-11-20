@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const FamFriendly = () => {
   return (
-    <div className="bg-gradient-to-t from-[#D18E6B] to-[#D18E6B] md:h-[80vh] font-sniglet md:grid grid-cols-3 py-6 md:py-0">
-      <div  className="col-span-1 gap-4 flex items-start justify-center flex-col px-5 sm:px-10 md:px-16">
+    <div className="bg-gradient-to-t from-[#F7F0EC] to-[#F7F0EC] md:h-[80vh] font-sniglet md:grid grid-cols-5 py-6 md:py-0">
+      <div  className="col-span-2 gap-4 flex items-start justify-center flex-col px-5 sm:px-10 md:px-16">
         <h1 className="text-3xl md:text-3xl text-center mx-auto md:text-left lg:text-6xl font- font-lucky text-white text-stroke-heading">
           Family Centric
         </h1>
@@ -20,7 +20,7 @@ const FamFriendly = () => {
         >
           <p className="w-20 md:w-40  -ml-6 md:-ml-12 invert-[0] fill-slate-500 -mr-5 md:-mr-10 text-center">
             <DotLottieReact
-              src="/assets/svgs/lottie.json"
+              src="/assets/svgs/PlayAnimation.json"
               loop
               autoplay
               className=""
@@ -30,13 +30,13 @@ const FamFriendly = () => {
           <p className="text-[#fff] font-bold">Get started</p>
         </Link>
       </div>
-      <div className="col-span-2 hidden md:block">
+      <div className="col-span-3 hidden md:block">
         <Image
-          src="/assets/png/famfriendd.png"
+          src="/assets/png/Fam.png"
           width={3000}
           height={2000}
           alt="famfriendly"
-          className="h-[80vh] brightness-125"
+          className="h-[80vh] w-full object-cover brightness-125"
         />
       </div>
     </div>
