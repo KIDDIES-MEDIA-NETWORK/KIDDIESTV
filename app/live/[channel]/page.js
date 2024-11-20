@@ -36,6 +36,7 @@ const Station = ({ params }) => {
   const [channelInfo, setChannelInfo] = useState();
   // const [hearts, setHearts] = useState();
   const { channel } = params;
+  const isAdmin = false
   const { heartCount, userInfo, handleSendHeart, fetchHeartCount } = useAuth();
 
   const [viewers, setViewers] = useState();
@@ -72,13 +73,7 @@ const Station = ({ params }) => {
     };
   }, [channel]);
 
-  // console.log(viewers, "dataaaaa")
-
-  // const fetchAllHeartCounts = async () => {
-  //   const res = await fetchHeartCount(channel); // Use the slug as channelId
-  //   // console.log(res)
-  //   setHearts(res)
-  // }
+  
   useEffect(() => {
     fetchHeartCount(channel); // Fetch heart counts when the component mounts
   }, [channel]);
@@ -282,9 +277,19 @@ const Station = ({ params }) => {
                 </div>
                 <div className="flex items-center gap-4">
                   {/* <div className="hidden md:flex justify-between items-center gap-2"><FaHeart /> {heartCount}</div> */}
-                  <div className="hidden md:flex justify-between items-center gap-2">
+                 {isAdmin && ( <div className="hidden md:flex justify-between items-center gap-2">
                     <FaRegEye /> {viewers}
-                  </div>
+                  </div>)}
+
+                  <div className="-my-24 translate-x-4">
+                    <Heart
+                    size={29}
+                    isClick={isClick}
+                    onClick={() => {
+                      setClick(true)
+                      handleSendHeart(channel)}}
+                  />
+                    </div>
                 </div>
               </div>
               <HeartAnimation />
@@ -360,7 +365,7 @@ const Station = ({ params }) => {
                     </div>
                   ))}
                 </div>
-                <div className="w-full px-5 flex items-center justify-between rea fix ed bo ttom-0 bg-[#edffaf] md:rounded-xl md:static">
+                <div className="w-full px-5 py-5 gap-4 flex items-center justify-between rea fix ed bo ttom-0 bg-[#edffaf] md:rounded-xl md:static">
                   <input
                     disabled={isLoading || !token}
                     value={newPostComment}
@@ -369,11 +374,7 @@ const Station = ({ params }) => {
                     placeholder="Type and press enter..."
                     className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none  bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
                   />
-                  <Heart
-                    size={29}
-                    isClick={isClick}
-                    onClick={() => handleSendHeart(channel)}
-                  />
+                  
                   <div
                     className=" cursor-pointer"
                     onClick={() => setShowEmoji(!showEmoji)}
