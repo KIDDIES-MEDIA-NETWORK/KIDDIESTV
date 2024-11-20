@@ -12,8 +12,14 @@ import Link from "next/link";
 import { FormatDate } from "@/app/utils/FormatDate";
 import EmojiPicker from "emoji-picker-react";
 import Swiper from "@/app/components/Swiper";
+import HeartAnimation from "@/app/components/Heart";
 import { useAuth } from "@/app/context/AuthContext";
+import io from "socket.io-client";
+import { FaRegEye } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
 
+const socket = io("https://lkn-kfic.onrender.com");
+// const socket = io("http://localhost:8000");
 
 const Station = ({ params }) => {
   const lastCommentRef = useRef(null);
@@ -26,19 +32,56 @@ const Station = ({ params }) => {
   const [newPostComment, setNewPostComment] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
-  const token = localStorage.getItem("gpt64");
+  const [token, setToken] = useState(null);
+  const [channelInfo, setChannelInfo] = useState();
+  // const [hearts, setHearts] = useState();
   const { channel } = params;
-  const { email, userInfo } = useAuth();
+  const { heartCount, userInfo, handleSendHeart, fetchHeartCount } = useAuth();
 
-
+  const [viewers, setViewers] = useState();
   const scrollToLastComment = () => {
     if (lastCommentRef.current) {
-      lastCommentRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      lastCommentRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
     }
   };
 
+  useEffect(() => {
+    // Check if code is running in the browser
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("gpt64");
+      setToken(storedToken); // Set the token in state
+    }
+  }, []); // Run once on mount
 
   const [streamLink, setStreamLink] = useState("");
+  useEffect(() => {
+    socket.emit("joinChannel", channel);
+
+    socket.on("updateViewers", (data) => {
+      // console.log(data.slug === channel, "dataaaaa")
+      setViewers(data.viewers);
+      // if (data?.slug === channel) {
+      // }
+    });
+
+    return () => {
+      socket.emit("leaveChannel", channel);
+    };
+  }, [channel]);
+
+  // console.log(viewers, "dataaaaa")
+
+  // const fetchAllHeartCounts = async () => {
+  //   const res = await fetchHeartCount(channel); // Use the slug as channelId
+  //   // console.log(res)
+  //   setHearts(res)
+  // }
+  useEffect(() => {
+    fetchHeartCount(channel); // Fetch heart counts when the component mounts
+  }, [channel]);
 
   useEffect(() => {
     // Fetch channel data using Axios
@@ -47,8 +90,8 @@ const Station = ({ params }) => {
         const response = await axios.get(
           `https://lkn-kfic.onrender.com/channels/${channel}`
         );
+        setChannelInfo(response?.data?.data);
         const { streamLink } = response?.data?.data;
-        console.log(response);
         setStreamLink(streamLink);
       } catch (error) {
         console.error("Error fetching channel:", error);
@@ -98,17 +141,15 @@ const Station = ({ params }) => {
       );
       setComments(response?.data?.data || []);
       scrollToLastComment();
-
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
   };
 
-
   const createComment = async () => {
     if (newPostComment.trim() === "") return;
     const body = {
-      text:newPostComment,
+      text: newPostComment,
       userId: userInfo._id,
     };
     try {
@@ -122,10 +163,9 @@ const Station = ({ params }) => {
           },
         }
       );
-      console.log(res);
 
       setIsLoading(false);
-      if (!res?.data?.success) return
+      if (!res?.data?.success) return;
 
       if (res?.data?.success) {
         setNewPostComment(""); // Clear the comment input
@@ -137,9 +177,8 @@ const Station = ({ params }) => {
     } catch (error) {
       setIsLoading(false);
       console.log(error);
-     
     }
-  }
+  };
 
   useEffect(() => {
     // Fetch all comments on initial load
@@ -147,7 +186,7 @@ const Station = ({ params }) => {
     if (channel) {
       fetchComments();
     }
-  }, [channel, token ]);
+  }, [channel, token]);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -155,7 +194,6 @@ const Station = ({ params }) => {
       createComment(); // Send the comment
     }
   };
-
 
   return (
     <div>
@@ -165,7 +203,7 @@ const Station = ({ params }) => {
       <div className="md:grid grid-cols-11">
         <div className=" pt-20 bg-[#D0D549] hidden md:block col-span-2 px-4  shadow-lg w-full">
           <h2 className="text-stroke-top text-[#073168] font-modak text-[28px] py-2 text-center">
-            Other Channels
+            More Channels
           </h2>
           <div className=" overflow-y-scroll flex flex-col gap-3 h-[78vh] rounded-xl">
             {channels.map((item, index) => (
@@ -198,10 +236,10 @@ const Station = ({ params }) => {
                   )
                 ) : (
                   <Image
-                    src={item.icon}
+                    src={item.image || item.icon}
                     width={500}
                     height={500}
-                    className="rounded-2xl bg-[#EDFFAF] p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform object-c over group-hover:scale-105"
+                    className="rounded-2xl bg-[#EDFFAF] h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform  group-hover:scale-105"
                     alt={`${item.channel} icon`}
                   />
                 )}
@@ -227,15 +265,31 @@ const Station = ({ params }) => {
           className="md:grid grid-cols-9 col-span-9 min-h-screen items-start sm:px-5 md:px-10 md:pt-24"
         >
           <div className="col-span-6 pt-16 md:pt-0">
-            <div className="relative h-full md:w-[90%]   flex flex-col gap-3 items-center justify-center md:rounded-xl  m-auto ">
+            <div className="relative h-full md:w-[90%]   flex flex-col items-ce nter justify-c enter  m-auto ">
               <video
                 ref={videoRef}
-                className="video-js  vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover md:rounded-xl h-full w-full absolute inset-0"
+                className="video-js  vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover h-full w-full absolute inset-0"
                 autoPlay
                 playsInline
               />
+              <div className="hidden md:flex justify-between items-center bg-primary text-white font-sniglet rounded-b-xl px-6 py-2">
+                {" "}
+                <div>
+                  <small>You are watching</small>
+                  <h1 className="text-xl capitalize font-bold">
+                    {channelInfo?.name}
+                  </h1>
+                </div>
+                <div className="flex items-center gap-4">
+                  {/* <div className="hidden md:flex justify-between items-center gap-2"><FaHeart /> {heartCount}</div> */}
+                  <div className="hidden md:flex justify-between items-center gap-2">
+                    <FaRegEye /> {viewers}
+                  </div>
+                </div>
+              </div>
+              <HeartAnimation />
 
-                <Swiper />
+              <Swiper />
             </div>
           </div>
 
@@ -243,13 +297,13 @@ const Station = ({ params }) => {
             <h1 className="font-modak font-bold text-4xl hidden md:block text-center text-stroke text-[#073168]">
               Live Comments
             </h1>
-            <div className=" bg-[#edffaf] relative  md:rounded-xl shadow-lg font-sniglet">
+            <div className=" bg-[#edffaf] sm:relative  md:rounded-xl shadow-lg font-sniglet">
               <p className=" py-3 md:py-5  px-5 border-b-2 text-2xl text-stroke-top   font-modak">
                 Top Chat
               </p>
-              <div className="relative">
+              <div className="relat ive">
                 {!token && (
-                  <div className="absolute z-[90] w-full top-0 left-0 px-5 py-4 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
+                  <div className="absolute z-[90] w-full top-0 left-0 px-5 py-2 text-center gap-3 flex flex-col items-center justify-center bg-[#fff] shadow-md">
                     <div className="font-sniglet flex gap-2">
                       <Image
                         src="/assets/png/notallow.png"
@@ -258,7 +312,7 @@ const Station = ({ params }) => {
                         height={30}
                         alt="not allowed"
                       />
-                      <p className="text-xl font-sniglet">
+                      <p className="text-lg font-sniglet">
                         You are not logged in
                       </p>
                     </div>
@@ -266,7 +320,7 @@ const Station = ({ params }) => {
                       Kindly{" "}
                       <Link
                         href="/auth/login"
-                        className="text-primary text-lg underline "
+                        className="text-primary  underline "
                       >
                         login
                       </Link>{" "}
@@ -274,12 +328,14 @@ const Station = ({ params }) => {
                     </small>
                   </div>
                 )}
-                <div className="flex sm:static flex-col gap-3 h-[45vh] sm:max-h-[50vh] fixed bottom-24 w-full sm:w-max bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
-                  {comments?.length === 0 && (<div>No comment added yet</div>)}
+                <div className="flex sm:static flex-col gap-3 h-[ 45vh] max-h-[32vh] sm:max-h-[50vh] fix ed bo ttom-24 w-full sm:w-full bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
+                  {comments?.length === 0 && <div className="text-center mx-auto">No comment added yet</div>}
                   {comments?.map((item, index) => (
                     <div
                       key={index}
-                      ref={index === comments.length - 1 ? lastCommentRef : null} // Attach the ref to the last comment
+                      ref={
+                        index === comments.length - 1 ? lastCommentRef : null
+                      } // Attach the ref to the last comment
                       className="grid grid-cols-10 items-center place-items-between"
                     >
                       <Image
@@ -296,27 +352,30 @@ const Station = ({ params }) => {
                         <p>{item?.text}</p>
                       </div>
                       <div className="col-span-2">
-                        <small>{FormatDate(item.createdAt)} <span className="hidden md:inline">ago</span></small>
+                        <small>
+                          {FormatDate(item.createdAt)}{" "}
+                          <span className="hidden md:inline">ago</span>
+                        </small>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="w-full px-5 flex items-center justify-between fixed bottom-0 bg-[#edffaf] md:static">
+                <div className="w-full px-5 flex items-center justify-between rea fix ed bo ttom-0 bg-[#edffaf] md:rounded-xl md:static">
                   <input
                     disabled={isLoading || !token}
                     value={newPostComment}
                     onChange={(e) => setNewPostComment(e.target.value)}
                     onKeyDown={handleKeyPress}
                     placeholder="Type and press enter..."
-                    className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
+                    className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none  bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
                   />
                   <Heart
                     size={29}
                     isClick={isClick}
-                    onClick={() => setClick(!isClick)}
+                    onClick={() => handleSendHeart(channel)}
                   />
                   <div
-                    className="relative cursor-pointer"
+                    className=" cursor-pointer"
                     onClick={() => setShowEmoji(!showEmoji)}
                   >
                     <picture>
@@ -329,20 +388,26 @@ const Station = ({ params }) => {
                     </picture>
                   </div>
                   {showEmoji && (
-                    <div className="text-sm absolute z-10   top-0 right-0 md:right-0">
-                      <EmojiPicker
-                        onEmojiClick={(data, e) => {
-                          let sym = data.unified.split("-");
-                          let codesArray = [];
-                          sym.forEach((el) => codesArray.push("0x" + el));
-                          let emoji = String.fromCodePoint(...codesArray);
-                          setNewPostComment(
-                            (prevComment) => prevComment + emoji
-                          );
-                        }}
-                        previewConfig={{ showPreview: false }}
-                        size={14}
-                      />
+                    <div>
+                      <div
+                        className="fixed inset-0 cursor-pointer bg-transparent w-full h-screen z-10"
+                        onClick={() => setShowEmoji(!showEmoji)}
+                      ></div>
+                      <div className="text-sm absolute z-10   sm:top-0 bottom-20 right-0 md:right-0">
+                        <EmojiPicker
+                          onEmojiClick={(data, e) => {
+                            let sym = data.unified.split("-");
+                            let codesArray = [];
+                            sym.forEach((el) => codesArray.push("0x" + el));
+                            let emoji = String.fromCodePoint(...codesArray);
+                            setNewPostComment(
+                              (prevComment) => prevComment + emoji
+                            );
+                          }}
+                          previewConfig={{ showPreview: false }}
+                          size={14}
+                        />
+                      </div>
                     </div>
                   )}
                 </div>

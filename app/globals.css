@@ -272,3 +272,20 @@ input {
 }
 
 
+.heart {
+  font-size: 5rem;
+  animation: float 8s ease-in-out forwards;
+}
+
+@keyframes float {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
+
+

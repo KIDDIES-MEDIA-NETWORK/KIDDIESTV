@@ -58,7 +58,6 @@ const OTPVerification = ({setNext}) => {
       email,
       verificationCode: otpNumber,
     }
-    console.log(body)
     
     if (otp.length === 6) {
       if (timeLeft > 0) {
@@ -68,7 +67,6 @@ const OTPVerification = ({setNext}) => {
             `https://lkn-kfic.onrender.com/api/auth/verify/otp`,
             body
           );
-          console.log(res);
     
           setLoading(false);
           if (!res?.data?.success) return

@@ -8,8 +8,11 @@ import { MdArticle } from "react-icons/md";
 import { HiMiniHome } from "react-icons/hi2";
 import { FaMoneyCheck } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 
 const SidebarMenu = ({ setMenuOpen }) => {
+  const { userInfo } = useAuth();
+
   const [isClosing, setIsClosing] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
@@ -127,7 +130,17 @@ const SidebarMenu = ({ setMenuOpen }) => {
             <span>Blog</span>
           </div>
         </Link>
-        <Link
+        {userInfo ? (<Link
+          href="/auth/logout"
+          className="text-[#282828] bg-button animate-pulse hover:animate-none flex items-center justify-between border-b px-5 py-8"
+        >
+          <div className="flex items-center gap-3">
+            <RiAccountCircleFill size={30} />
+            <span>Log out</span>
+          </div>
+        </Link>) : 
+        (
+          <Link
           href="/auth/login"
           className="text-[#282828] bg-button animate-pulse hover:animate-none flex items-center justify-between border-b px-5 py-8"
         >
@@ -136,6 +149,7 @@ const SidebarMenu = ({ setMenuOpen }) => {
             <span>Log in</span>
           </div>
         </Link>
+        )}
       </div>
     </div>
   );
