@@ -50,19 +50,14 @@ const Channels = () => {
     };
 
     fetchCounts();
-  }, [fetchHeartCount, fetchChannel]);
+  }, []);
 
   console.log(heartCounts)
 
   return (
     <div
-      className="bg-gradi ent-to-t font-sniglet from-[#bc7d 5b81] to-[#ffb48 d81] min-h-screen"
-      style={{
-        backgroundImage: `url(/assets/png/channelbg.jpg)`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className=" font-sniglet   "
+      
     >
       <div className="fixed z-[100] top-0 w-full">
         <Header />
@@ -75,13 +70,13 @@ const Channels = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className="pb-20 md:pt-32 pt-20 z-[10000] md:px-24"
+        className=" md:pt- 32 pt-14 z-[10000] md:px-20 min-h-screen"
       >
         <div className="">
-          <h2 className="text-2xl text-center md:text-left font-semib old capitalize md:text-3xl font-lucky text-[#ddd] m d:text-gray-900  mb-3">
+          <h2 className="hidden text-2xl text-center md:text-left font-semib old capitalize md:text-3xl font-lucky text-[#ddd] m d:text-gray-900  mb-3">
             My favorites
           </h2>
-          <div className="hidden 2xl:flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
+          <div className="hidden 2l:flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
             {channels.slice(1, 3).map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
@@ -140,11 +135,11 @@ const Channels = () => {
           <h2 className="text-2xl md:text-3xl font-semib old text-center md:text-left font-lucky text-[#fff] m d:text-gray-900 my-3">
             All channels
           </h2>
-          <div className="flex gap-x-4 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start">
+          <div className="flex gap-x-4 md:gap-y-20 gap-y-12 w-full flex-wrap items-center justify-center md:justify-start  lg:grid  lg:grid-cols-5 ">
             {channels.map((item, index) => (
               <Link
                 href={`/live/${item?.slug}`}
-                className="relative h-full md:h-44 w-80 md:w-60 group flex-shrink-0"
+                className="relative h-full md:h-44 w-80 md:w-60 grou hover:scale-105 flex-shrink-0 hover:shadow-md transition-all duration-500 ease-in-out"
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index + 3)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -153,7 +148,7 @@ const Channels = () => {
                   item.montage.endsWith(".mp4") ? (
                     <video
                       src={item.montage}
-                      className="rounded-xl h-72 w-80 md:w-full md:h-full object-cover group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105"
+                      className="rounded-t-xl h-72 w-80 md:w-full md:h-full object-cover group-hover:shadow-lg transition-transform duration-300 transform group"
                       autoPlay
                       loop
                       muted
@@ -163,7 +158,7 @@ const Channels = () => {
                       src={item.montage}
                       width={500}
                       height={500}
-                      className="rounded-xl bg-slate-900 p-5 h-72 w-80 md:w-full md:h-full object-contain group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105"
+                      className="rounded-t-xl bg-slate-900 p-5 h-72 w-80 md:w-full md:h-full object-contain group-hover:shadow-lg transition-transform duration-300 transform "
                       alt={`${item.channel} montage`}
                     />
                   )
@@ -172,28 +167,31 @@ const Channels = () => {
                     src={item.image || item.icon}
                     width={500}
                     height={500}
-                    className={`rounded-xl bg-slate-900  h-72 w-80 md:w-full md:h-full ${
+                    className={`rounded-t-xl bg-slate-900  h-72 w-80 md:w-full md:h-full ${
                       item?.image ? "object-cover" : "object-contain"
-                    } group-hover:shadow-lg transition-transform duration-300 transform group-hover:scale-105`}
+                    } group-hover:shadow-lg transition-transform duration-300 transform ease-in-out`}
                     alt={`${item.channel} icon`}
                   />
                 )}
-                <div  className="text-base mt-2 text-center flex items-center gap-5">
+                {!item.live && (<div className="absolute top-2 right-2 bg-[#f7790e] text-white text-xs rounded-full px-2.5 py-1.5">
+                      Coming soon
+                    </div>)}
+                <div  className="text-base px-3 rounded-b-xl py-3 text- flex items-center justify-between gap-1 bg-slate-100 ">
                   <p>{item.channel}</p>
+                  <div className="flex text-sm items-center justify-center gap-2">
                   <p className="flex text-sm items-center gap-1">
-                    <FaHeart color="red" />
+                    <FaHeart color="#386299" />
                     {heartCounts[item.slug] || 0}
                   </p>
                   <p className="flex text-sm items-center gap-1">
                     <FaComments color="#386299" />
                     {commentCounts[item.slug]  || 0}
-                  </p>
+                  </p></div>
                 </div>
                 {hoveredIndex === index + 3 && (
                   <div className="">
-                    <div className="absolute top-2 right-2 bg-[#2e80fbaf] text-white text-2xl rounded-full p-1.5">
-                      <MdAdd />
-                    </div>
+                    
+                    
                     <div className="absolute inset-0 flex items-center justify-center">
                       <p className="w-40  text-center">
                         <DotLottieReact

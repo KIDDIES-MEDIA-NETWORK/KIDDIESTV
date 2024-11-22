@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Devices = () => {
   return (
-    <div className="bg-gradient-to-t from-[#E4E2F2] to-[#CCCAC4] h-[70vh] font-sniglet place-content-center items-center md:grid grid-cols-2">
+    <div className="bg-gradient-to-t from-[#F7F0EC] to-[#F7F0EC] h-[70vh] font-sniglet place-content-center items-center md:grid grid-cols-2">
       <div className="col-span-1">
         <Image
           src="/assets/png/mockup.png"
