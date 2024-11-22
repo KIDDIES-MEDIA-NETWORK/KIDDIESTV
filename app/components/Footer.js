@@ -7,7 +7,7 @@ import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <div className="bg-[#e4e2f2] ">
+    <div className="bg-[#F7F0EC] ">
       <section className="section">
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>
@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="wave wave4"></div>
       </section>
 
-      <div className="bg-[#386299] font-sniglet roun ded-t-[3rem] px-5 sm:px-10 pb-7 sm:px-24">
+      <div className="bg-[#386299] font-sniglet roun ded-t-[3rem] px-5  pb-7 sm:px-24">
         <div className=" text-white flex flex-wrap items-start justify-between gap-6">
           <div className="flex flex-col">
             <h3 className="text-2xl text-orange pb-3">Quick Links</h3>

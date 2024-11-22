@@ -7,27 +7,23 @@ import { SlArrowRight, SlArrowLeft } from "react-icons/sl";
 const Swiper = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Move to the next image
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carousels.length);
   };
 
-  // Move to the previous image
   const prevSlide = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + carousels.length) % carousels.length
     );
   };
 
-  // Automatically change image every 4 seconds
   useEffect(() => {
     const timer = setInterval(nextSlide, 4000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="relative mt-3 w-full hidden md:block max-w -lg mx-auto overflow-hidden">
-      {/* Carousel Images */}
+    <div className="relative mt-1.5 w-full hidden md:block max-w -lg mx-auto overflow-hidden">
       <div className="relative h-64 w-full sm:h-[10rem]">
         {carousels.map((image, index) => (
           <Image

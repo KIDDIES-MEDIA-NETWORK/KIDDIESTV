@@ -36,7 +36,7 @@ const Station = ({ params }) => {
   const [channelInfo, setChannelInfo] = useState();
   // const [hearts, setHearts] = useState();
   const { channel } = params;
-  const isAdmin = false
+  const isAdmin = false;
   const { heartCount, userInfo, handleSendHeart, fetchHeartCount } = useAuth();
 
   const [viewers, setViewers] = useState();
@@ -73,7 +73,6 @@ const Station = ({ params }) => {
     };
   }, [channel]);
 
-  
   useEffect(() => {
     fetchHeartCount(channel); // Fetch heart counts when the component mounts
   }, [channel]);
@@ -225,7 +224,7 @@ const Station = ({ params }) => {
                       src={item.montage}
                       width={500}
                       height={500}
-                      className="rounded-2xl bg-[#EDFFAF] p-5 h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                      className="rounded-2xl bg-[#EDFFAF]  h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform group- object-contain"
                       alt={`${item.channel} montage`}
                     />
                   )
@@ -234,14 +233,26 @@ const Station = ({ params }) => {
                     src={item.image || item.icon}
                     width={500}
                     height={500}
-                    className="rounded-2xl bg-[#EDFFAF] h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform  group-hover:scale-105"
+                    className={`rounded-2xl bg-[#EDFFAF] h-full group-hover:shadow-md transition-transform duration-300 ease-in-out transform   ${
+                      !item?.image ? "object-contain" : "object-cover"
+                    } `}
                     alt={`${item.channel} icon`}
                   />
                 )}
 
-                <div className="bg-gradient-to-t from-[#28282881] rounded-2xl to-transparent absolute top-0 left-0 w-full h-full"></div>
+                <div
+                  className={`${
+                    hoveredCard !== index
+                      ? "bg-gradient-to-t"
+                      : "hover:bg-transparent"
+                  }  from-[#28282881] rounded-2xl to-transparent absolute top-0 left-0 w-full h-full`}
+                ></div>
                 <div className="absolute bottom-0 left-0 text-white flex w-full justify-between p-4 items-center mt-2">
-                  <h3 className="font-sniglet text-base text-black">
+                  <h3
+                    className={`${
+                      hoveredCard == index ? "hidden" : "block"
+                    } font-sniglet  text-base text-black`}
+                  >
                     {item.channel}
                   </h3>
                 </div>
@@ -271,25 +282,28 @@ const Station = ({ params }) => {
                 {" "}
                 <div>
                   <small>You are watching</small>
-                  <h1 className="text-xl capitalize font-bold">
+                  <h1 className="text-xl uppercase font-bold">
                     {channelInfo?.name}
                   </h1>
                 </div>
                 <div className="flex items-center gap-4">
                   {/* <div className="hidden md:flex justify-between items-center gap-2"><FaHeart /> {heartCount}</div> */}
-                 {isAdmin && ( <div className="hidden md:flex justify-between items-center gap-2">
-                    <FaRegEye /> {viewers}
-                  </div>)}
+                  {isAdmin && (
+                    <div className="hidden md:flex justify-between items-center gap-2">
+                      <FaRegEye /> {viewers}
+                    </div>
+                  )}
 
                   <div className="-my-24 translate-x-4">
                     <Heart
-                    size={29}
-                    isClick={isClick}
-                    onClick={() => {
-                      setClick(true)
-                      handleSendHeart(channel)}}
-                  />
-                    </div>
+                      size={29}
+                      isClick={isClick}
+                      onClick={() => {
+                        setClick(true);
+                        handleSendHeart(channel);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
               <HeartAnimation />
@@ -302,7 +316,7 @@ const Station = ({ params }) => {
             <h1 className="font-modak font-bold text-4xl hidden md:block text-center text-stroke text-[#073168]">
               Live Comments
             </h1>
-            <div className=" bg-[#edffaf] sm:relative  md:rounded-xl shadow-lg font-sniglet">
+            <div className=" bg-[#edffaf] shadow-lg shadow-gray-700 sm:relative  md:rounded-xl  font-sniglet">
               <p className=" py-3 md:py-5  px-5 border-b-2 text-2xl text-stroke-top   font-modak">
                 Top Chat
               </p>
@@ -333,8 +347,12 @@ const Station = ({ params }) => {
                     </small>
                   </div>
                 )}
-                <div className="flex sm:static flex-col gap-3 h-[ 45vh] max-h-[32vh] sm:max-h-[50vh] fix ed bo ttom-24 w-full sm:w-full bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
-                  {comments?.length === 0 && <div className="text-center mx-auto">No comment added yet</div>}
+                <div className="flex sm:static flex-col gap-3 h-[ 45vh] h-[34vh] sm:h-[60vh]  fix ed bo ttom-24 w-full sm:w-full bg-[#edffaf]  overflow-y-scroll pt-5 px-5 ">
+                  {comments?.length === 0 && (
+                    <div className="text-center mx-auto">
+                      No comment added yet
+                    </div>
+                  )}
                   {comments?.map((item, index) => (
                     <div
                       key={index}
@@ -374,7 +392,18 @@ const Station = ({ params }) => {
                     placeholder="Type and press enter..."
                     className="w-full disabled:cursor-not-allowed disabled:opacity-30 resize-none focus:outline-none  bg-[#b7b7b7] focus:bg-[#f1f1f1]  rounded-full px-3 py-2 placeholder:animate-pulse placeholder:text-[#505050] text-black"
                   />
-                  
+
+                  <div className="md:hidden block -my-24 -mx-10">
+                    <Heart
+                      size={29}
+                      isClick={isClick}
+                      onClick={() => {
+                        setClick(true);
+                        handleSendHeart(channel);
+                      }}
+                    />
+                  </div>
+
                   <div
                     className=" cursor-pointer"
                     onClick={() => setShowEmoji(!showEmoji)}
@@ -415,6 +444,9 @@ const Station = ({ params }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="md:hidden">
+          <Swiper />
         </div>
       </div>
     </div>

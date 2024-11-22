@@ -20,18 +20,15 @@ export const carousels = [
 ];
 
 export const channels = [
-  {
-    channel: 'PCDL4Kids',
-    slug: 'PCDL4Kids',
-    icon: "/assets/png/PCDL4Kids.png",
-    montage: "/assets/png/PCDL4Kids.png",
-  },
+  
   {
     channel: 'LOVETOONS TV',
     slug: 'lovetoons-tv',
     icon: "/assets/png/lovetoons-TV.png",
     image: "/assets/png/lovetoo.png",
     montage: "/video/lovetoon.mp4",
+    live:true,
+
   },
   {
     channel: 'KLW TV',
@@ -39,30 +36,48 @@ export const channels = [
     icon: "/assets/png/klw.png",
     image: "/assets/png/klwImage.png",
     montage: "/video/klw.mp4",
-  },
-  {
-    channel: 'Rhapsody of Realities Kids TV',
-    slug: 'rorktv',
-    icon: "/assets/png/rorktv-logo.png",
-    montage: "/assets/png/rorktv-logo.png",
-  },
-  {
-    channel: 'Kids fun Spot',
-    slug: 'kfstv',
-    icon: "/assets/png/KFS.png",
-    montage: "/assets/png/KFS.png",
+    live:true,
+
   },
   {
     channel: 'LN Kids TV',
     icon: "/assets/png/lnkids.png",
     slug: 'lnkids',
     montage: "/assets/png/lnkids.png",
+    live:true,
+
   },
+  {
+    channel: 'Rhapsody of Realities Kids TV',
+    slug: 'rorktv',
+    icon: "/assets/png/rorktv-logo.png",
+    montage: "/assets/png/rorktv-logo.png",
+    live:true,
+
+  },
+  {
+    channel: 'Kids fun Spot',
+    slug: 'kfstv',
+    icon: "/assets/png/KFS.png",
+    montage: "/assets/png/KFS.png",
+    live:false,
+
+  },
+ 
   {
     channel: "Children's Ministry & Schools",
     icon: "/assets/png/childrensministry.png",
     slug: 'childrensministry',
     montage: "/assets/png/childrensministry.png",
+    live:false,
+
+  },
+  {
+    channel: 'PCDL4Kids',
+    slug: 'PCDL4Kids',
+    icon: "/assets/png/PCDL4Kids.png",
+    montage: "/assets/png/PCDL4Kids.png",
+    live:false,
   },
 ]
 
