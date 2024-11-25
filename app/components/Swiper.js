@@ -23,7 +23,7 @@ const Swiper = () => {
   }, []);
 
   return (
-    <div className="relative mt-1.5 w-full hidden md:block max-w -lg mx-auto overflow-hidden">
+    <div className="relative mt-1.5 w-full  max-w -lg mx-auto overflow-hidden">
       <div className="relative h-64 w-full sm:h-[10rem]">
         {carousels.map((image, index) => (
           <Image

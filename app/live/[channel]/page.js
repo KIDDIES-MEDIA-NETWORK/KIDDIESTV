@@ -308,7 +308,9 @@ const Station = ({ params }) => {
               </div>
               <HeartAnimation />
 
-              <Swiper />
+              <div className="md:block hidden">
+          <Swiper />
+        </div>
             </div>
           </div>
 
