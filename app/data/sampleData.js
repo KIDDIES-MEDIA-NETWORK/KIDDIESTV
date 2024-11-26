@@ -1,5 +1,5 @@
 export const images = [
-  "/assets/png/PCDL4Kids.png",
+  "/assets/png/joycall.webp",
   "/assets/png/KFS.png",
   "/assets/png/lovetoons-TV.png",
   "/assets/png/rorktv-logo.png",
@@ -73,10 +73,10 @@ export const channels = [
 
   },
   {
-    channel: 'PCDL4Kids',
-    slug: 'PCDL4Kids',
-    icon: "/assets/png/PCDL4Kids.png",
-    montage: "/assets/png/PCDL4Kids.png",
+    channel: 'JoyCall TV',
+    slug: 'Joycalltv',
+    icon: "/assets/png/joycall.webp",
+    montage: "/assets/png/joycall.webp",
     live:false,
   },
 ]
