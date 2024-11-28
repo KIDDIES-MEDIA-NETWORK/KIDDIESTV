@@ -19,6 +19,42 @@ export const carousels = [
   { src: "/assets/png/lrtb.png",    alt: "Image 3" },
 ];
 
+export const programs = [
+  
+  {
+    channel: 'Global Kids Connect with Pastor Chris',
+    slug: 'lovetoons-tv',
+    icon: "/assets/png/kidsconnect.png",
+    image: "/assets/png/kidsconnect.png",
+    montage: "/video/kidsconnect.mp4",
+    live:true,
+    premium:true,
+    episodes: 18
+
+  },
+  {
+    channel: 'Lets Read the Bible Campaign',
+    slug: 'klwtv',
+    icon: "/assets/png/readthebible.png",
+    image: "/assets/png/readthebible.png",
+    montage: "/video/klw.mp4",
+    live:true,
+    premium: false,
+    episodes: 36
+
+  },
+  {
+    channel: "Children's Online Church Service",
+    slug: 'klwtv',
+    icon: "/assets/png/childrensministry.png",
+    image: "/assets/png/childrensministry.png",
+    montage: "/video/childrensministry.mp4",
+    live:true,
+    premium: false,
+    episodes: "Sunday"
+
+  },
+]
 export const channels = [
   
   {
