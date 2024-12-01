@@ -13,14 +13,13 @@ import Footer from "@/app/components/Footer";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Carousel from "@/app/components/Carousel";
 
-
 export default function Home() {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="">
+    <div className="bg-[#CCCAC4]">
       <div className="">
         <div className="fixed z-[100] top-0 w-full">
           <Header />
@@ -28,10 +27,17 @@ export default function Home() {
 
         <div className="relative">
           <Image
-            src="/assets/png/newbg.png"
+            src="/assets/png/emptybg.png"
             width={3000}
             height={3000}
-            className="brightness-[0.8] hidden md:block object- w-full h-screen"
+            className="brightne ss-[0.8] hidden md:block object- w-full h-screen"
+            alt="background"
+          />
+          <Image
+            src="/assets/png/tab.png"
+            width={1000}
+            height={1000}
+            className="static w-[100%] h-[100%] hidden  md:absolute top-0 md:flex items-center justify-center"
             alt="background"
           />
           <video
@@ -40,8 +46,7 @@ export default function Home() {
             loop
             muted
             alt="video card1"
-            className="static md:absolute mt-10 top-0  md:mt-0 md:top-44 lg:top-[32vh] xl:top-[32vh] 2xl:top-40 flex flex-col justify-center items-center md:right-[50%] text-center md:translate-x-[50%] brightness-[0.3] float-none m-auto md:rounded-3xl object-cover w-full md:w-[69%] md:h-[68vh]"
-
+            className="static md:absolute mt-10 top-0  md:mt-0 md:top-36 lg:top-36 xl:top-40 2xl:top-40 flex flex-col justify-center items-center md:right-[50%] text-center md:translate-x-[50%] brightness-[0.3] float-none m-auto md:rounded-3xl object-cover w-full md:w-[69%] md:h-[68vh]"
             height={300}
             width={300}
           />
@@ -79,7 +84,6 @@ export default function Home() {
         </div>
       </div>
 
-     
       <FamFriendly />
       <Devices />
       <Footer />
