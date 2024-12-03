@@ -71,7 +71,7 @@ const Channels = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className=" md:pt- 32 pt-14 z-[10000] md:px-20 min-h-screen"
+        className=" md:pb-32 pt-14 z-[10000] md:px-20 min-h-screen"
       >
         <div className="mt-14">
           <h2 className="text-2xl md:text-3xl font-semib old text-center md:text-left font-lucky text-[#fff] m d:text-gray-900 my-3">
@@ -129,7 +129,7 @@ const Channels = () => {
                   <div className=" text-xs text-primary gap-2">{item?.episodes} episodes
                   </div>
                 </div>
-                {hoveredIndex === index + 3 && (
+                {hoveredItem === index + 3 && (
                   <div className="">
                     
                     
