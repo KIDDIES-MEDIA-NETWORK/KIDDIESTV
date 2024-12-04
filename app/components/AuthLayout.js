@@ -312,7 +312,7 @@ const AuthLayout = ({ heading, action }) => {
       </div>
       <div className="relative hidden md:block">
         <Image
-          src="/assets/png/signupbg.png"
+          src="/assets/png/KidsGif.gif"
           alt="background"
           layout="fill"
           className="object-cover"
