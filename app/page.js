@@ -21,11 +21,11 @@ export default function Home() {
   return (
     <div className="bg-[#CCCAC4]">
       <div className="">
-        <div className="fixed z-[100] top-0 w-full">
+        <div className="fixed z-[1000] top-0 w-full">
           <Header />
         </div>
 
-        <div className="relative">
+        <div className="">
           <Image
             src="/assets/png/emptybg.png"
             width={3000}
@@ -37,7 +37,7 @@ export default function Home() {
             src="/assets/png/tab.png"
             width={1000}
             height={1000}
-            className="static w-[100%] h-[100%] hidden  md:absolute top-0 md:flex items-center justify-center"
+            className="static z-[100] md:w-[78%] md:h-[80vh] hidden mx-auto  md:absolute top-0  md:top-32 md:flex flex-col items-center justify-center md:right-[50%] text-center md:translate-x-[50%]"
             alt="background"
           />
           <video
@@ -46,7 +46,7 @@ export default function Home() {
             loop
             muted
             alt="video card1"
-            className="static md:absolute mt-10 top-0  md:mt-0 md:top-36 lg:top-36 xl:top-40 2xl:top-40 flex flex-col justify-center items-center md:right-[50%] text-center md:translate-x-[50%] brightness-[0.3] float-none m-auto md:rounded-3xl object-cover w-full md:w-[69%] md:h-[68vh]"
+            className="static md:absolute mt-10 top-0  md:mt-0 md:top-36 lg:top-36 xl:top-40 2xl:top-40 flex flex-col justify-center items-center md:right-[50%] text-center md:translate-x-[50%] brightness-[0.3] float-none m-auto md:rounded-3xl object-cover w-full md:w-[70%] md:h-[70vh]"
             height={300}
             width={300}
           />
