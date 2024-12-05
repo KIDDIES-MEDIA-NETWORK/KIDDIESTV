@@ -46,8 +46,8 @@ export const programs = [
   {
     channel: "Children's Online Church Service",
     slug: 'klwtv',
-    icon: "/assets/png/childrensministry.png",
-    image: "/assets/png/childrensministry.png",
+    icon: "/assets/png/kidsonline.png",
+    image: "/assets/png/kidsonline.png",
     montage: "/video/childrensministry.mp4",
     live:true,
     premium: false,

@@ -117,7 +117,7 @@ const Channels = () => {
                 )}
                 {item.premium && (<div className="absolute top-2 right-2 bg-slate-900 text-white text-xs rounded-full px-2 py-2">
                   <Image
-                    src="/assets/png/premium.png"
+                    src="/assets/png/espeesCoin.png"
                     width={300}
                     height={300}
                     className={`w-5`}

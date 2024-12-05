@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="bg-[#CCCAC4]">
       <div className="">
-        <div className="fixed z-[100] top-0 w-full">
+        <div className="fixed z-[1000] top-0 w-full">
           <Header />
         </div>
 
