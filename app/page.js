@@ -21,11 +21,11 @@ export default function Home() {
   return (
     <div className="bg-[#CCCAC4]">
       <div className="">
-        <div className="fixed z-[100] top-0 w-full">
+        {/* <div className="fixed z-[100] top-0 w-full">
           <Header />
-        </div>
+        </div> */}
 
-        <div className="relative">
+        <div className="">
           <Image
             src="/assets/png/emptybg.png"
             width={3000}
