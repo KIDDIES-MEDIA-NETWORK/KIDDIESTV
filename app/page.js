@@ -37,7 +37,7 @@ export default function Home() {
             src="/assets/png/tab.png"
             width={1000}
             height={1000}
-            className="static w-[100%] h-[100%] hidden  md:absolute top-0 md:flex items-center justify-center"
+            className="static z-[100] w-[100%] h-[100%] hidden  md:absolute top-0 md:flex items-center justify-center"
             alt="background"
           />
           <video
