@@ -1,6 +1,6 @@
 "use client";
 import { Metadata } from "@/app/components/Metadata";
-import  "@/app/globals.css";
+import "@/app/globals.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Header from "@/app/components/Header";
@@ -59,7 +59,6 @@ const Station = ({ params }) => {
   }, []); // Run once on mount
 
   const [streamLink, setStreamLink] = useState("");
- 
 
   useEffect(() => {
     // Fetch channel data using Axios
@@ -90,11 +89,11 @@ const Station = ({ params }) => {
         preload: "auto",
         fluid: true,
         sources: [
-            {
-              src: "https://zkpywpmblbeg-hls-live.5centscdn.com/LOVEWORLDKIDDIES/7cd9d740a2b7ea3e70246ab8245b8325.sdp/playlist.m3u8",
-              type: "application/x-mpegURL",
-            },
-          ],
+          {
+            src: "https://zkpywpmblbeg-hls-live.5centscdn.com/LOVEWORLDKIDDIES/7cd9d740a2b7ea3e70246ab8245b8325.sdp/playlist.m3u8",
+            type: "application/x-mpegURL",
+          },
+        ],
       });
 
       playerRef.current.on("waiting", () => setLoading(true));
@@ -112,10 +111,6 @@ const Station = ({ params }) => {
     };
   }, [streamLink]);
 
-  
-
- 
-
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault(); // Prevent default Enter action (new line in input)
@@ -125,10 +120,7 @@ const Station = ({ params }) => {
 
   return (
     <div>
-      
       <div className="">
-        
-
         <div
           style={{
             backgroundImage: `url(/assets/png/livebg.png)`,
@@ -175,14 +167,9 @@ const Station = ({ params }) => {
                 </div>
               </div>
               <HeartAnimation />
-
-             
             </div>
           </div>
-
-          
         </div>
-       
       </div>
     </div>
   );
