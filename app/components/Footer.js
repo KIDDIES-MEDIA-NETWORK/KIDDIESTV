@@ -1,13 +1,17 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BiArrowToTop, BiLogoFacebook } from "react-icons/bi";
 import { CiMail, CiPhone } from "react-icons/ci";
 import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
   return (
-    <div className="bg-[#F7F0EC] ">
+    <div className={`${pathname == "/" ? "bg-[#F7F0EC] " : "bg-[#BD7E5C]"} `}>
       <section className="section">
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>
