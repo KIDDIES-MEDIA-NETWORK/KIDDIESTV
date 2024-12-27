@@ -7,7 +7,7 @@ import io from 'socket.io-client';
 export const AuthContext = createContext();
 
 // Initialize socket connection
-const socket = io('https://lkn-kfic.onrender.com');
+const socket = io('https://lkn.up.railway.app');
 
 export const AuthProvider = ({ children }) => {
     const [email, setEmail] = useState("");
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
     const fetchHeartCount = async (channelId) => {
       console.log(channelId)
         try {
-          const response = await axios.get(`https://lkn-kfic.onrender.com/channels/${channelId}/heart`);
+          const response = await axios.get(`https://lkn.up.railway.app/channels/${channelId}/heart`);
           console.log(response.data.heartCount)
           setHeartCount(response.data.heartCount)
           return response.data.heartCount;
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
         try {
           // Call the backend to increment the heart count
         //   const response = await axios.put(`http://localhost:/8000/api/hearts/${channelId}`);
-          const response = await axios.put(`https://lkn-kfic.onrender.com/channels/${channelId}/heart`);
+          const response = await axios.put(`https://lkn.up.railway.app/channels/${channelId}/heart`);
           console.log('Updated heart count:', response);
           fetchHeartCount(channelId)
         } catch (error) {
@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
       
       const fetchChannel = async (channelId) => {
         try {
-          const response = await axios.get(`https://lkn-kfic.onrender.com/channels/${channelId}`);
+          const response = await axios.get(`https://lkn.up.railway.app/channels/${channelId}`);
           setChannelInfo(response?.data?.data)
           return response?.data?.data?.comments;
         } catch (error) {
@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
 
         try {
             const res = await axios.get(
-                `https://lkn-kfic.onrender.com/api/user`,
+                `https://lkn.up.railway.app/api/user`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`, // Pass the token in the headers
