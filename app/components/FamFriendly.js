@@ -30,7 +30,7 @@ const FamFriendly = () => {
           <p className="text-[#fff] font-bold">Get started</p>
         </Link>
       </div>
-      <div className="col-span-3 hidden md:block">
+      <div className="col-span-3 hidden md:block bg-gradient-to-b from-[#2E80FB] to-[#386299] ">
         <Image
           src="/assets/png/Fam.png"
           width={3000}
