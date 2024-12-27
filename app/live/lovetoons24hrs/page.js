@@ -125,9 +125,7 @@ const Station = ({ params }) => {
 
   return (
     <div>
-      <div className="fixed z-[100] top-0 w-full">
-        <Header />
-      </div>
+      
       <div className="">
         
 
