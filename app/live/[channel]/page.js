@@ -18,7 +18,7 @@ import io from "socket.io-client";
 import { FaRegEye } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 
-const socket = io("https://lkn-kfic.onrender.com");
+const socket = io("https://lkn.up.railway.app");
 // const socket = io("http://localhost:8000");
 
 const Station = ({ params }) => {
@@ -82,7 +82,7 @@ const Station = ({ params }) => {
     const fetchChannel = async () => {
       try {
         const response = await axios.get(
-          `https://lkn-kfic.onrender.com/channels/${channel}`
+          `https://lkn.up.railway.app/channels/${channel}`
         );
         setChannelInfo(response?.data?.data);
         const { streamLink } = response?.data?.data;
@@ -126,7 +126,7 @@ const Station = ({ params }) => {
   const fetchComments = async () => {
     try {
       const response = await axios.get(
-        `https://lkn-kfic.onrender.com/api/comments/${channel}`,
+        `https://lkn.up.railway.app/api/comments/${channel}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -149,7 +149,7 @@ const Station = ({ params }) => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        `https://lkn-kfic.onrender.com/api/comments/${channel}`,
+        `https://lkn.up.railway.app/api/comments/${channel}`,
         body,
         {
           headers: {

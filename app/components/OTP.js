@@ -64,7 +64,7 @@ const OTPVerification = ({setNext}) => {
         try {
           setLoading(true);
           const res = await axios.post(
-            `https://lkn-kfic.onrender.com/api/auth/verify/otp`,
+            `https://lkn.up.railway.app/api/auth/verify/otp`,
             body
           );
     

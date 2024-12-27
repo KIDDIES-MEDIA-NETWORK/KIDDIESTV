@@ -103,7 +103,7 @@ const AuthLayout = ({ heading, action }) => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `https://lkn-kfic.onrender.com/api/auth/register`,
+        `https://lkn.up.railway.app/api/auth/register`,
         body
       );
       console.log(res);
@@ -132,7 +132,7 @@ const AuthLayout = ({ heading, action }) => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `https://lkn-kfic.onrender.com/api/auth/login`,
+        `https://lkn.up.railway.app/api/auth/login`,
         body
       );
       console.log(res);
