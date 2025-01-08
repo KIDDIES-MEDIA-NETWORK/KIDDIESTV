@@ -17,6 +17,7 @@ import { useAuth } from "@/app/context/AuthContext";
 import io from "socket.io-client";
 import { FaRegEye } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
+import { toast } from 'react-hot-toast';
 
 const socket = io("https://lkn.up.railway.app");
 // const socket = io("http://localhost:8000");
@@ -103,6 +104,7 @@ const Station = ({ params }) => {
       playerRef.current = videojs(videoRef.current, {
         controls: true,
         autoplay: true,
+        muted:true,
         preload: "auto",
         fluid: true,
         sources: [{ src: streamLink, type: "application/x-mpegURL" }],
@@ -189,6 +191,31 @@ const Station = ({ params }) => {
     }
   };
 
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [reloadKey, setReloadKey] = useState(0); // Key to force component re-render
+
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+      toast.success("You are back online!");
+      setReloadKey((prevKey) => prevKey + 1); // Increment key to reload the component
+    };
+
+    const handleOffline = () => {
+      setIsOnline(false);
+      toast.error("You are offline. Please check your connection.");
+    };
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+
   return (
     <div>
       <div className="fixed z-[100] top-0 w-full">
@@ -270,12 +297,13 @@ const Station = ({ params }) => {
           }}
           className="md:grid grid-cols-9 col-span-9 min-h-screen items-start sm:px-5 md:px-10 md:pt-24"
         >
-          <div className="col-span-6 pt-16 md:pt-0">
+          <div className="col-span-6 pt-16 md:pt-0" >
             <div className="relative h-full md:w-[90%]   flex flex-col items-ce nter justify-c enter  m-auto ">
               <video
                 ref={videoRef}
                 className="video-js  vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover h-full w-full absolute inset-0"
                 autoPlay
+                muted
                 playsInline
               />
               <div className="hidden md:flex justify-between items-center bg-primary text-white font-sniglet rounded-b-xl px-6 py-2">
