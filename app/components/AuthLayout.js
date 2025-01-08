@@ -142,7 +142,7 @@ const AuthLayout = ({ heading, action }) => {
         setError({ type: "username", message: res?.data?.message });
       }
       localStorage.setItem("gpt64", res?.data?.token);
-      router.push("/channels");
+      router.back();
     } catch (error) {
       setLoading(false);
       console.log(error);

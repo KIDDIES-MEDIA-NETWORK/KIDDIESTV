@@ -58,29 +58,9 @@ const Station = ({ params }) => {
     }
   }, []); // Run once on mount
 
-  const [streamLink, setStreamLink] = useState("");
+  const [streamLink, setStreamLink] = useState("https://zkpywpmblbeg-hls-live.5centscdn.com/LOVEWORLDKIDDIES/7cd9d740a2b7ea3e70246ab8245b8325.sdp/playlist.m3u8");
 
-  useEffect(() => {
-    // Fetch channel data using Axios
-    const fetchChannel = async () => {
-      try {
-        const response = await axios.get(
-          `https://lkn.up.railway.app/channels/${channel}`
-        );
-        setChannelInfo(response?.data?.data);
-        const { streamLink } = response?.data?.data;
-        setStreamLink(streamLink);
-      } catch (error) {
-        console.error("Error fetching channel:", error);
-      }
-    };
-
-    if (params?.channel) {
-      fetchChannel();
-    }
-  }, [params?.channel]);
-
-  useEffect(() => {
+    useEffect(() => {
     if (streamLink && !playerRef.current) {
       // Initialize Video.js player with the fetched stream link
       playerRef.current = videojs(videoRef.current, {
@@ -90,7 +70,7 @@ const Station = ({ params }) => {
         fluid: true,
         sources: [
           {
-            src: "https://zkpywpmblbeg-hls-live.5centscdn.com/LOVEWORLDKIDDIES/7cd9d740a2b7ea3e70246ab8245b8325.sdp/playlist.m3u8",
+            src: streamLink ,
             type: "application/x-mpegURL",
           },
         ],
@@ -128,10 +108,10 @@ const Station = ({ params }) => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          className="md:flex justify-center  items-center min-h-screen w-full sm:px-5 md:px-10 md:pt-24"
+          className="md:flex justify-center items-center min-h-screen w-full sm:px-5 md:px-10 md:pt-24"
         >
           <div className="col-span-6 pt-16 md:pt-0">
-            <div className="relative h-full w-full   flex flex-col items-ce nter justify-c enter  m-auto ">
+            <div className="relative h-full w-full flex flex-col items-ce nter justify-c enter  m-auto ">
               <video
                 ref={videoRef}
                 className="video-js  vjs-default-skin player_236158168-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-live vjs-has-started vjs-paused vjs-user-inactive vjs-tech vjs-big-play-centered object-cover h-full w-full absolute inset-0"

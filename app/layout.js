@@ -1,7 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { AuthProvider } from "./context/AuthContext";
-import HomePageScript from "@/app/components/HomePageScript"; // Client Component for script injection
+import HomePageScript from "@/app/components/HomePageScript"; 
+
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -57,6 +59,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
+        <Toaster position="top-center" />
           {/* Include script only on the homepage */}
           {children}
           <HomePageScript />
